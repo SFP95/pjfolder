@@ -15,9 +15,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      debugShowMaterialGrid: false,
       title: 'RGS - Role Game System',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.brown,
+        backgroundColor: Colors.brown.shade100
       ),
       routes: {
         '/':(context)=> LoginPage(),
@@ -28,7 +31,7 @@ class MyApp extends StatelessWidget {
         '/character_sheet': (context) => CharacterSheetPage(),
         '/character_creation': (context) => CharacterCreationPage(),
       },
-      initialRoute: '/',
+      initialRoute: '/character_creation',
       /*
       home: Scaffold(
         appBar: AppBar(
