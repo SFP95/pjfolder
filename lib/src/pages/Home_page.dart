@@ -8,12 +8,12 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         elevation: 0,
-        title: Text('Home',style: TextStyle(fontSize: 20,color: Colors.grey[400])),
+        title: Text('Home',style: TextStyle(fontSize: 40,color: Colors.grey[400])),
         backgroundColor: Colors.grey.shade800,
       ),
       body: Center(
         child: GridView.count(
-          padding: const EdgeInsets.all(90),
+          padding: const EdgeInsets.all(120),
           mainAxisSpacing: 30.3,
           crossAxisSpacing: 30.3,
           crossAxisCount: 2,
