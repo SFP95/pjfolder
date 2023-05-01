@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
           crossAxisSpacing: 30.3,
           crossAxisCount: 2,
           children: [
-            ElevatedButton(
+            IconButton(
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -27,26 +27,26 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/dice');
-              },
-              child: Text('Dados',style: TextStyle(fontSize: 60,color: Colors.grey[800])),
+                onPressed: (){
+                  Navigator.pushNamed(context, '/dice');
+                },
+                icon: Image.asset('assets/images/dado.png',color:Colors.grey.shade400, height: 140, ),
             ),
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(80), // Borde redondeado
+            IconButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(80), // Borde redondeado
+                    ),
                   ),
                 ),
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/characters_list');
-              },
-              child: Text('Lista de Personajes',style: TextStyle(fontSize: 60,color: Colors.grey[800])),
+                onPressed: () {
+                  Navigator.pushNamed(context, '/characters_list');
+                },
+                icon: Image.asset('assets/images/nota.png',color:Colors.grey.shade400, height: 140)
             ),
-            ElevatedButton(
+            IconButton(
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
                 //elevation: 0,
@@ -59,9 +59,9 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, '/gallery');
               },
-              child: Text('Galería',style: TextStyle(fontSize: 60,color: Colors.grey[800])),
+              icon: Image.asset('assets/images/galeria.png',color:Colors.grey.shade400, height: 140),
             ),
-            ElevatedButton(
+            IconButton(
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
                 shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -73,7 +73,7 @@ class HomePage extends StatelessWidget {
               onPressed: () {
                 Navigator.pushNamed(context, '/login');
               },
-              child: Text('Login',style: TextStyle(fontSize: 60,color: Colors.grey[800])),
+              icon: Image.asset('assets/images/perfil.png',color:Colors.grey.shade400, height: 140),
             ),
           ],
         ),
