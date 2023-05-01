@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowMaterialGrid: false,
       title: 'RGS - Role Game System',
       theme: ThemeData(
-        primaryColor: Colors.deepPurpleAccent.shade100, // Color primario
+        primaryColor: Colors.grey.shade800, // Color primario
         accentColor: Colors.grey.shade800, // Color secundario
         backgroundColor: Colors.grey, // Color de fondo
         errorColor: Colors.red.shade400, // Color de alerta
