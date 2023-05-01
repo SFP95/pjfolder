@@ -4,22 +4,29 @@ class GalleryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[400],
         appBar: AppBar(
-        title: Text('Galería'),
+          centerTitle: true,
+          backgroundColor: Colors.grey.shade800,
+          title: Text('Galería',style: TextStyle(fontSize: 20,color: Colors.grey[400])),
     ),
     body: GridView.count(
-    crossAxisCount: 2,
-    children: List.generate(10, (index) {
-    return Center(
-    child: Image.network('https://via.placeholder.com/150'), // Aquí puedes reemplazar las URLs de las imágenes con las que obtengas de tu servicio de imágenes
-    );
-    }),
-    ),
+      padding: EdgeInsets.all(40),
+      mainAxisSpacing: 30.3,
+      crossAxisSpacing: 30.3,
+      crossAxisCount: 3,
+      children: List.generate(10, (index) {
+        return Center(
+          child: Image.network('https://via.placeholder.com/150'), // Aquí puedes reemplazar las URLs de las imágenes con las que obtengas de tu servicio de imágenes
+        );
+        }),
+      ),
     floatingActionButton: FloatingActionButton(
     onPressed: () {
+      Navigator.pushNamed(context, '/newImg');
     // Implementar la lógica para agregar imágenes aquí
     },
-    child: Icon(Icons.add),
+    child: Icon(Icons.add,color: Colors.grey.shade400,),
     ),
     );
   }
