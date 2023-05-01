@@ -13,11 +13,39 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: GridView.count(
-          padding: EdgeInsets.all(70),
+          padding: const EdgeInsets.all(90),
           mainAxisSpacing: 30.3,
           crossAxisSpacing: 30.3,
           crossAxisCount: 2,
           children: [
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(80), // Borde redondeado
+                  ),
+                ),
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, '/dice');
+              },
+              child: Text('Dados',style: TextStyle(fontSize: 60,color: Colors.grey[800])),
+            ),
+            ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(80), // Borde redondeado
+                  ),
+                ),
+              ),
+              onPressed: () {
+                Navigator.pushNamed(context, '/characters_list');
+              },
+              child: Text('Lista de Personajes',style: TextStyle(fontSize: 60,color: Colors.grey[800])),
+            ),
             ElevatedButton(
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
@@ -46,34 +74,6 @@ class HomePage extends StatelessWidget {
                 Navigator.pushNamed(context, '/login');
               },
               child: Text('Login',style: TextStyle(fontSize: 60,color: Colors.grey[800])),
-            ),
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(80), // Borde redondeado
-                  ),
-                ),
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/dice');
-              },
-              child: Text('Dados',style: TextStyle(fontSize: 60,color: Colors.grey[800])),
-            ),
-            ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(80), // Borde redondeado
-                  ),
-                ),
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, '/characters_list');
-              },
-              child: Text('Lista de Personajes',style: TextStyle(fontSize: 60,color: Colors.grey[800])),
             ),
           ],
         ),
