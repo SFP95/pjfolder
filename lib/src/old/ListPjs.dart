@@ -1,3 +1,4 @@
+/*
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -5,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import 'list_pjs_model.dart';
-export 'list_pjs_model.dart';
+import '../list_pjs_model.dart';
+export '../list_pjs_model.dart';
 
 class ListPjsWidget extends StatefulWidget {
   const ListPjsWidget({Key? key}) : super(key: key);
@@ -63,7 +64,9 @@ class _ListPjsWidgetState extends State<ListPjsWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(60, 0, 0, 0),
             child: Text(
               FFLocalizations.of(context).getText(
-                '153fhhy3' /* List Characters */,
+                '153fhhy3' */
+/* List Characters *//*
+,
               ),
               style: FlutterFlowTheme.of(context).headlineMedium.override(
                 fontFamily: 'Poppins',
@@ -108,7 +111,9 @@ class _ListPjsWidgetState extends State<ListPjsWidget> {
                             children: [
                               Text(
                                 FFLocalizations.of(context).getText(
-                                  'edgd2lef' /* Nombre Pj */,
+                                  'edgd2lef' */
+/* Nombre Pj *//*
+,
                                 ),
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
@@ -141,7 +146,9 @@ class _ListPjsWidgetState extends State<ListPjsWidget> {
                             children: [
                               Text(
                                 FFLocalizations.of(context).getText(
-                                  'olkgvjl8' /* Nombre Pj */,
+                                  'olkgvjl8' */
+/* Nombre Pj *//*
+,
                                 ),
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
@@ -174,7 +181,9 @@ class _ListPjsWidgetState extends State<ListPjsWidget> {
                             children: [
                               Text(
                                 FFLocalizations.of(context).getText(
-                                  '7957qqf6' /* Nombre Pj */,
+                                  '7957qqf6' */
+/* Nombre Pj *//*
+,
                                 ),
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
@@ -207,7 +216,9 @@ class _ListPjsWidgetState extends State<ListPjsWidget> {
                             children: [
                               Text(
                                 FFLocalizations.of(context).getText(
-                                  'u79j9m5u' /* Nombre Pj */,
+                                  'u79j9m5u' */
+/* Nombre Pj *//*
+,
                                 ),
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
@@ -240,7 +251,9 @@ class _ListPjsWidgetState extends State<ListPjsWidget> {
                             children: [
                               Text(
                                 FFLocalizations.of(context).getText(
-                                  '79kgjwsm' /* Nombre Pj */,
+                                  '79kgjwsm' */
+/* Nombre Pj *//*
+,
                                 ),
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
@@ -273,7 +286,9 @@ class _ListPjsWidgetState extends State<ListPjsWidget> {
                             children: [
                               Text(
                                 FFLocalizations.of(context).getText(
-                                  'ho96suyg' /* Nombre Pj */,
+                                  'ho96suyg' */
+/* Nombre Pj *//*
+,
                                 ),
                                 style: FlutterFlowTheme.of(context).bodyMedium,
                               ),
@@ -314,7 +329,9 @@ class _ListPjsWidgetState extends State<ListPjsWidget> {
                               children: [
                                 Text(
                                   FFLocalizations.of(context).getText(
-                                    'gba5oygp' /* Nombre Pj */,
+                                    'gba5oygp' */
+/* Nombre Pj *//*
+,
                                   ),
                                   style:
                                   FlutterFlowTheme.of(context).bodyMedium,
@@ -373,3 +390,4 @@ class _ListPjsWidgetState extends State<ListPjsWidget> {
     );
   }
 }
+*/

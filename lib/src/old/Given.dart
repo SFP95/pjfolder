@@ -1,3 +1,4 @@
+/*
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -5,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import 'home_page_model.dart';
-export 'home_page_model.dart';
+import '../home_page_model.dart';
+export '../home_page_model.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({Key? key}) : super(key: key);
@@ -63,7 +64,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(70, 0, 0, 0),
             child: Text(
               FFLocalizations.of(context).getText(
-                'admkcugk' /* RP Folder */,
+                'admkcugk' */
+/* RP Folder *//*
+,
               ),
               style: FlutterFlowTheme.of(context).headlineMedium.override(
                 fontFamily: 'Poppins',
@@ -169,3 +172,4 @@ class _HomePageWidgetState extends State<HomePageWidget> {
     );
   }
 }
+*/

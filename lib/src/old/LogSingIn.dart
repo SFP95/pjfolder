@@ -1,3 +1,4 @@
+/*
 import '/auth/firebase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
@@ -70,7 +71,9 @@ class _LogSignInWidgetState extends State<LogSignInWidget> {
                   children: [
                     Text(
                       FFLocalizations.of(context).getText(
-                        'n4pco0zz' /* PJ FOLDER */,
+                        'n4pco0zz' */
+/* PJ FOLDER *//*
+,
                       ),
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Montserrat',
@@ -104,12 +107,16 @@ class _LogSignInWidgetState extends State<LogSignInWidget> {
                           tabs: [
                             Tab(
                               text: FFLocalizations.of(context).getText(
-                                '5oamsw10' /* Sign In */,
+                                '5oamsw10' */
+/* Sign In *//*
+,
                               ),
                             ),
                             Tab(
                               text: FFLocalizations.of(context).getText(
-                                '4lt391nf' /* Sign Up */,
+                                '4lt391nf' */
+/* Sign Up *//*
+,
                               ),
                             ),
                           ],
@@ -133,7 +140,9 @@ class _LogSignInWidgetState extends State<LogSignInWidget> {
                                       decoration: InputDecoration(
                                         labelText:
                                         FFLocalizations.of(context).getText(
-                                          'imwhbhex' /* Email Address */,
+                                          'imwhbhex' */
+/* Email Address *//*
+,
                                         ),
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodySmall
@@ -146,7 +155,9 @@ class _LogSignInWidgetState extends State<LogSignInWidget> {
                                         ),
                                         hintText:
                                         FFLocalizations.of(context).getText(
-                                          '4zgnl4i5' /* Enter your email... */,
+                                          '4zgnl4i5' */
+/* Enter your email... *//*
+,
                                         ),
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodySmall
@@ -214,7 +225,9 @@ class _LogSignInWidgetState extends State<LogSignInWidget> {
                                       decoration: InputDecoration(
                                         labelText:
                                         FFLocalizations.of(context).getText(
-                                          '7rcvr13f' /* Password */,
+                                          '7rcvr13f' */
+/* Password *//*
+,
                                         ),
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodySmall
@@ -227,7 +240,9 @@ class _LogSignInWidgetState extends State<LogSignInWidget> {
                                         ),
                                         hintText:
                                         FFLocalizations.of(context).getText(
-                                          'cdkzed07' /* Enter your password... */,
+                                          'cdkzed07' */
+/* Enter your password... *//*
+,
                                         ),
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodySmall
@@ -320,7 +335,9 @@ class _LogSignInWidgetState extends State<LogSignInWidget> {
                                             'HomePage', mounted);
                                       },
                                       text: FFLocalizations.of(context).getText(
-                                        'gkpdzbv8' /* Sign In */,
+                                        'gkpdzbv8' */
+/* Sign In *//*
+,
                                       ),
                                       options: FFButtonOptions(
                                         width: 230,
@@ -364,7 +381,9 @@ class _LogSignInWidgetState extends State<LogSignInWidget> {
                                       decoration: InputDecoration(
                                         labelText:
                                         FFLocalizations.of(context).getText(
-                                          'hufa10s5' /* Email Address */,
+                                          'hufa10s5' */
+/* Email Address *//*
+,
                                         ),
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodySmall
@@ -377,7 +396,9 @@ class _LogSignInWidgetState extends State<LogSignInWidget> {
                                         ),
                                         hintText:
                                         FFLocalizations.of(context).getText(
-                                          'rdi33dvt' /* Enter your email... */,
+                                          'rdi33dvt' */
+/* Enter your email... *//*
+,
                                         ),
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodySmall,
@@ -442,7 +463,9 @@ class _LogSignInWidgetState extends State<LogSignInWidget> {
                                       decoration: InputDecoration(
                                         labelText:
                                         FFLocalizations.of(context).getText(
-                                          '1s50wr0k' /* Password */,
+                                          '1s50wr0k' */
+/* Password *//*
+,
                                         ),
                                         labelStyle: FlutterFlowTheme.of(context)
                                             .bodySmall
@@ -455,7 +478,9 @@ class _LogSignInWidgetState extends State<LogSignInWidget> {
                                         ),
                                         hintText:
                                         FFLocalizations.of(context).getText(
-                                          's4b12fp0' /* Enter your password... */,
+                                          's4b12fp0' */
+/* Enter your password... *//*
+,
                                         ),
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .bodySmall,
@@ -548,7 +573,9 @@ class _LogSignInWidgetState extends State<LogSignInWidget> {
                                             'HomePage', mounted);
                                       },
                                       text: FFLocalizations.of(context).getText(
-                                        'svsuy5tb' /* Create Account */,
+                                        'svsuy5tb' */
+/* Create Account *//*
+,
                                       ),
                                       options: FFButtonOptions(
                                         width: 230,
@@ -604,3 +631,4 @@ class _LogSignInWidgetState extends State<LogSignInWidget> {
     );
   }
 }
+*/

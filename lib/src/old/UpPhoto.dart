@@ -1,3 +1,4 @@
+/*
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -6,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import 'up_photo_model.dart';
-export 'up_photo_model.dart';
+import '../up_photo_model.dart';
+export '../up_photo_model.dart';
 
 class UpPhotoWidget extends StatefulWidget {
   const UpPhotoWidget({Key? key}) : super(key: key);
@@ -50,7 +51,9 @@ class _UpPhotoWidgetState extends State<UpPhotoWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(90, 0, 0, 0),
             child: Text(
               FFLocalizations.of(context).getText(
-                't0fsn6kb' /* Invite User */,
+                't0fsn6kb' */
+/* Invite User *//*
+,
               ),
               style: FlutterFlowTheme.of(context).headlineMedium.override(
                 fontFamily: 'Poppins',
@@ -142,7 +145,9 @@ class _UpPhotoWidgetState extends State<UpPhotoWidget> {
                               }
                             },
                             text: FFLocalizations.of(context).getText(
-                              '4dgv981z' /* Upload Photo */,
+                              '4dgv981z' */
+/* Upload Photo *//*
+,
                             ),
                             options: FFButtonOptions(
                               width: 270,
@@ -178,3 +183,4 @@ class _UpPhotoWidgetState extends State<UpPhotoWidget> {
     );
   }
 }
+*/

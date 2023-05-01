@@ -1,3 +1,4 @@
+/*
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -6,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import 'pj_profile_model.dart';
-export 'pj_profile_model.dart';
+import '../pj_profile_model.dart';
+export '../pj_profile_model.dart';
 
 class PjProfileWidget extends StatefulWidget {
   const PjProfileWidget({Key? key}) : super(key: key);
@@ -64,7 +65,9 @@ class _PjProfileWidgetState extends State<PjProfileWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(80, 0, 0, 0),
             child: Text(
               FFLocalizations.of(context).getText(
-                'c4c33g5e' /* PJ Profile */,
+                'c4c33g5e' */
+/* PJ Profile *//*
+,
               ),
               style: FlutterFlowTheme.of(context).headlineMedium.override(
                 fontFamily: 'Poppins',
@@ -119,7 +122,9 @@ class _PjProfileWidgetState extends State<PjProfileWidget> {
                         children: [
                           Text(
                             FFLocalizations.of(context).getText(
-                              'fe3o0ihq' /* Nombre */,
+                              'fe3o0ihq' */
+/* Nombre *//*
+,
                             ),
                             textAlign: TextAlign.start,
                             style: FlutterFlowTheme.of(context)
@@ -131,7 +136,9 @@ class _PjProfileWidgetState extends State<PjProfileWidget> {
                           ),
                           Text(
                             FFLocalizations.of(context).getText(
-                              'q8vwt4vu' /* Apellidos */,
+                              'q8vwt4vu' */
+/* Apellidos *//*
+,
                             ),
                             textAlign: TextAlign.start,
                             style: FlutterFlowTheme.of(context)
@@ -143,7 +150,9 @@ class _PjProfileWidgetState extends State<PjProfileWidget> {
                           ),
                           Text(
                             FFLocalizations.of(context).getText(
-                              'owes34ke' /* Raza */,
+                              'owes34ke' */
+/* Raza *//*
+,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -154,7 +163,9 @@ class _PjProfileWidgetState extends State<PjProfileWidget> {
                           ),
                           Text(
                             FFLocalizations.of(context).getText(
-                              '51mgs9ok' /* Edad */,
+                              '51mgs9ok' */
+/* Edad *//*
+,
                             ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -199,7 +210,9 @@ class _PjProfileWidgetState extends State<PjProfileWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
-                                    'cy5he8ob' /* STATS : */,
+                                    'cy5he8ob' */
+/* STATS : *//*
+,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -245,7 +258,9 @@ class _PjProfileWidgetState extends State<PjProfileWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
-                                    'jofsem06' /* HISTORIA : */,
+                                    'jofsem06' */
+/* HISTORIA : *//*
+,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -291,7 +306,9 @@ class _PjProfileWidgetState extends State<PjProfileWidget> {
                                 EdgeInsetsDirectional.fromSTEB(0, 10, 0, 0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
-                                    'qb2p8gwu' /* CARACTERÍSTICAS : */,
+                                    'qb2p8gwu' */
+/* CARACTERÍSTICAS : *//*
+,
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
@@ -335,7 +352,9 @@ class _PjProfileWidgetState extends State<PjProfileWidget> {
                         print('Button pressed ...');
                       },
                       text: FFLocalizations.of(context).getText(
-                        'o4kkgabc' /* Edit */,
+                        'o4kkgabc' */
+/* Edit *//*
+,
                       ),
                       options: FFButtonOptions(
                         width: 130,
@@ -360,7 +379,9 @@ class _PjProfileWidgetState extends State<PjProfileWidget> {
                         print('Button pressed ...');
                       },
                       text: FFLocalizations.of(context).getText(
-                        'ydmoxsz1' /* Delete */,
+                        'ydmoxsz1' */
+/* Delete *//*
+,
                       ),
                       options: FFButtonOptions(
                         width: 130,
@@ -390,3 +411,4 @@ class _PjProfileWidgetState extends State<PjProfileWidget> {
     );
   }
 }
+*/

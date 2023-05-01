@@ -1,3 +1,4 @@
+/*
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -7,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import 'newpj_model.dart';
-export 'newpj_model.dart';
+import '../newpj_model.dart';
+export '../newpj_model.dart';
 
 class NewpjWidget extends StatefulWidget {
   const NewpjWidget({Key? key}) : super(key: key);
@@ -67,7 +68,9 @@ class _NewpjWidgetState extends State<NewpjWidget> {
           ),
           title: Text(
             FFLocalizations.of(context).getText(
-              '8dzdrsmr' /* Create new character */,
+              '8dzdrsmr' */
+/* Create new character *//*
+,
             ),
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).headlineMedium.override(
@@ -119,7 +122,9 @@ class _NewpjWidgetState extends State<NewpjWidget> {
                             obscureText: false,
                             decoration: InputDecoration(
                               hintText: FFLocalizations.of(context).getText(
-                                'a3e8aq9x' /* Name */,
+                                'a3e8aq9x' */
+/* Name *//*
+,
                               ),
                               hintStyle: FlutterFlowTheme.of(context)
                                   .bodySmall
@@ -181,7 +186,9 @@ class _NewpjWidgetState extends State<NewpjWidget> {
                             obscureText: false,
                             decoration: InputDecoration(
                               hintText: FFLocalizations.of(context).getText(
-                                'ry4o1ymp' /*  Last Name */,
+                                'ry4o1ymp' */
+/*  Last Name *//*
+,
                               ),
                               hintStyle: FlutterFlowTheme.of(context)
                                   .bodySmall
@@ -243,7 +250,9 @@ class _NewpjWidgetState extends State<NewpjWidget> {
                             obscureText: false,
                             decoration: InputDecoration(
                               hintText: FFLocalizations.of(context).getText(
-                                '829qkqgb' /* Age */,
+                                '829qkqgb' */
+/* Age *//*
+,
                               ),
                               hintStyle: FlutterFlowTheme.of(context)
                                   .bodySmall
@@ -302,7 +311,9 @@ class _NewpjWidgetState extends State<NewpjWidget> {
                               FormFieldController<String>(null),
                           options: [
                             FFLocalizations.of(context).getText(
-                              'senxvw6j' /* Option 1 */,
+                              'senxvw6j' */
+/* Option 1 *//*
+,
                             )
                           ],
                           onChanged: (val) =>
@@ -321,10 +332,14 @@ class _NewpjWidgetState extends State<NewpjWidget> {
                             fontSize: 20,
                           ),
                           hintText: FFLocalizations.of(context).getText(
-                            'dr2z1066' /*  Raza */,
+                            'dr2z1066' */
+/*  Raza *//*
+,
                           ),
                           searchHintText: FFLocalizations.of(context).getText(
-                            '7qqphys8' /* Search for an item... */,
+                            '7qqphys8' */
+/* Search for an item... *//*
+,
                           ),
                           icon: Icon(
                             Icons.keyboard_arrow_down,
@@ -378,3 +393,4 @@ class _NewpjWidgetState extends State<NewpjWidget> {
     );
   }
 }
+*/
