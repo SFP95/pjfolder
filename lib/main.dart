@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pjfolder/src/pages/Home_page.dart';
 import 'package:pjfolder/src/pages/character_creation_page.dart';
 import 'package:pjfolder/src/pages/character_list_page.dart';
 import 'package:pjfolder/src/pages/character_sheet_page.dart';
@@ -19,19 +20,23 @@ class MyApp extends StatelessWidget {
       debugShowMaterialGrid: false,
       title: 'RGS - Role Game System',
       theme: ThemeData(
-        primarySwatch: Colors.brown,
-        backgroundColor: Colors.brown.shade100
+        primaryColor: Colors.deepPurpleAccent.shade100, // Color primario
+        accentColor: Colors.grey.shade800, // Color secundario
+        backgroundColor: Colors.grey, // Color de fondo
+        errorColor: Colors.red.shade400, // Color de alerta
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       routes: {
-        '/':(context)=> LoginPage(),
+        '/':(context)=> HomePage(),
+        '/login':(context)=> LoginPage(),
         '/register': (context) => RegisterPage(),
         '/gallery': (context) => GalleryPage(),
         '/dice': (context) => DicePage(),
-        '/characters': (context) => CharacterListPage(),
+        '/characters_list': (context) => CharacterListPage(),
         '/character_sheet': (context) => CharacterSheetPage(),
         '/character_creation': (context) => CharacterCreationPage(),
       },
-      initialRoute: '/character_creation',
+      initialRoute: '/',
       /*
       home: Scaffold(
         appBar: AppBar(
