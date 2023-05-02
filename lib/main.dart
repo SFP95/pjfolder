@@ -31,6 +31,7 @@ class MyApp extends StatelessWidget {
         '/login':(context)=> LoginPage(),
         '/register': (context) => RegisterPage(),
         '/gallery': (context) => GalleryPage(),
+        //'/newPhoto': (context) => NewPhoto(),
         '/dice': (context) => DicePage(),
         '/characters_list': (context) => CharacterListPage(),
         '/character_sheet': (context) => CharacterSheetPage(),
