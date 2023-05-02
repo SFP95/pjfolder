@@ -44,9 +44,8 @@ class CharacterSheetPage extends StatelessWidget {
                 ],
               ),
             ),
-            Divider(color: Colors.grey[800],height: 30),
             Container(
-              margin: EdgeInsets.all(30),
+              margin: EdgeInsets.fromLTRB(80,40,80,40),
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
@@ -82,25 +81,65 @@ class CharacterSheetPage extends StatelessWidget {
                 ],
               ),
             ),
-            Divider(color: Colors.grey[800],height: 30),
             Container(
-              margin: EdgeInsets.all(30),
-              padding: EdgeInsets.all(20),
+              margin: EdgeInsets.fromLTRB(80,40,80,40),
+              padding: EdgeInsets.fromLTRB(80,40,80,40),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
                   color: Colors.grey[400]
               ),
-              child: Text("Historia",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
+              child: Column(
+                children: [
+                  Text("Historia",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
+                  Container(
+                    margin: EdgeInsets.all(20),
+                    padding: EdgeInsets.all(240),
+                    color: Colors.white60,
+                    child: Text("CONTENIDO DE LA HISTORIA"),
+                  )
+                ],
+              ),
             ),
-            Divider(color: Colors.grey[800],height: 30),
             Container(
-              margin: EdgeInsets.all(30),
+              margin: EdgeInsets.fromLTRB(80,40,80,40),
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
                   color: Colors.grey[400]
               ),
-              child: Text("Características",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
+              child: Column(
+                children: [
+                  Text("Caracteristicas",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
+                  Divider(color: Colors.grey[400],height: 20,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Pelo :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                          Text("Piel :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                          Text("Rascos :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                          Text("Vestimenta :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                          Text("Caracter :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                          Text("Mascota :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                          Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                          Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                          Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                          Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                          Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                        ],
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
           ],
         ),
