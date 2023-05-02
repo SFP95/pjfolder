@@ -13,7 +13,7 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: GridView.count(
-          padding: const EdgeInsets.all(120),
+          padding: const EdgeInsets.fromLTRB(28,150,28,28),
           mainAxisSpacing: 30.3,
           crossAxisSpacing: 30.3,
           crossAxisCount: 2,

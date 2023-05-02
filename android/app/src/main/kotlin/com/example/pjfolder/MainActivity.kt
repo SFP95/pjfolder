@@ -1,4 +1,4 @@
-package com.example.pjfolder
+package com.example.RGS
 
 import io.flutter.embedding.android.FlutterActivity
 

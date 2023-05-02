@@ -1,6 +1,6 @@
 {
-    "name": "pjfolder",
-    "short_name": "pjfolder",
+    "name": "RGS",
+    "short_name": "RGS",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

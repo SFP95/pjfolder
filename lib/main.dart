@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:pjfolder/src/pages/Home_page.dart';
-import 'package:pjfolder/src/pages/character_creation_page.dart';
-import 'package:pjfolder/src/pages/character_list_page.dart';
-import 'package:pjfolder/src/pages/character_sheet_page.dart';
-import 'package:pjfolder/src/pages/dice_page.dart';
-import 'package:pjfolder/src/pages/gallery_page.dart';
-import 'package:pjfolder/src/pages/login_page.dart';
-import 'package:pjfolder/src/pages/register_page.dart';
+import 'package:RGS/src/pages/Home_page.dart';
+import 'package:RGS/src/pages/character_creation_page.dart';
+import 'package:RGS/src/pages/character_list_page.dart';
+import 'package:RGS/src/pages/character_sheet_page.dart';
+import 'package:RGS/src/pages/dice_page.dart';
+import 'package:RGS/src/pages/gallery_page.dart';
+import 'package:RGS/src/pages/login_page.dart';
+import 'package:RGS/src/pages/register_page.dart';
 
 void main() {
   runApp(MyApp());
