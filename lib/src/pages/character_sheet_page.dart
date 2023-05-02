@@ -16,10 +16,92 @@ class CharacterSheetPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-            // Coloca aquí los widgets personalizados para mostrar la información del personaje
-            // Por ejemplo: RaceDropdown(), StatContainer(), StoryContainer(), PhysicalCharacteristicsContainer()
+            Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.grey[400]
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CircleAvatar(
+                    maxRadius: 80,
+                    backgroundColor: Colors.grey[800],
+                    child: Image.asset("assets/images/perfil.png",color: Colors.grey[400],) //la ruta de ima imagen que debe se cogida de la galeria
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text("NOMBRE",style: TextStyle(fontSize: 30,color: Colors.grey[800])),
+                      Text("APELLIDO",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
+                      Text("RAZA",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                      Text("EDAD",style: TextStyle(fontSize: 15,color: Colors.grey[800])),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Divider(color: Colors.grey[800],height: 30),
+            Container(
+              margin: EdgeInsets.all(30),
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: Colors.grey[400],
+              ),
+              child: Column(
+                children: [
+                  Text("STATS",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
+                  Divider(color: Colors.grey[400],height: 20,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Velocidad :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                          Text("Fuerza :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                          Text("Agilidad :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                          Text("Inteligencia :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                        ],
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("0",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                          Text("0",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                          Text("0",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                          Text("0",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                        ],
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
+            Divider(color: Colors.grey[800],height: 30),
+            Container(
+              margin: EdgeInsets.all(30),
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: Colors.grey[400]
+              ),
+              child: Text("Historia",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
+            ),
+            Divider(color: Colors.grey[800],height: 30),
+            Container(
+              margin: EdgeInsets.all(30),
+              padding: EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: Colors.grey[400]
+              ),
+              child: Text("Características",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
+            ),
           ],
         ),
       ),
@@ -27,17 +109,19 @@ class CharacterSheetPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            onPressed: () {
-              // Implementar la lógica de edición aquí
-            },
-            child: Icon(Icons.edit),
-          ),
-          SizedBox(height: 10),
-          FloatingActionButton(
+            backgroundColor: Colors.grey[400],
             onPressed: () {
               // Implementar la lógica de borrado aquí
             },
-            child: Icon(Icons.delete),
+            child: Icon(Icons.edit,size: 30,color: Colors.grey[800],),
+          ),
+          SizedBox(height: 10),
+          FloatingActionButton(
+            backgroundColor: Colors.grey[400],
+            onPressed: () {
+              // Implementar la lógica de borrado aquí
+            },
+            child: Icon(Icons.delete,size: 30,color: Colors.grey[800],),
           ),
         ],
       ),
