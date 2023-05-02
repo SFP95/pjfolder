@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 class CharacterSheetPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Scaffold( backgroundColor: Colors.grey,
       appBar: AppBar(
-        title: Text('Ficha de Personaje'),
+
+        centerTitle: true,
+        elevation: 0,
+        title: Text('Ficha de Personaje',style: TextStyle(fontSize: 40,color: Colors.grey[800])),
+        backgroundColor: Colors.grey.shade400,
       ),
       body: SingleChildScrollView(
         child: Column(

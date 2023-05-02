@@ -4,11 +4,12 @@ class CharacterListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[800],
       appBar: AppBar(
         centerTitle: true,
         elevation: 0,
-        title: Text('Lista de Personajes',style: TextStyle(fontSize: 40,color: Colors.grey[800])),
-        backgroundColor: Colors.grey.shade400,
+        title: Text('Lista de Personajes',style: TextStyle(fontSize: 40,color: Colors.grey[400])),
+        backgroundColor: Colors.grey.shade800,
       ),
       body: ListView.builder(
         padding: EdgeInsets.all(30),
@@ -26,7 +27,7 @@ class CharacterListPage extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.grey[800],
-                    fontSize: 20,
+                    fontSize: 30,
                   )), // Reemplaza este texto con el nombre del personaje en la lista
               onTap: () {
                 Navigator.pushNamed(context, '/character_sheet');
@@ -36,6 +37,7 @@ class CharacterListPage extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.grey[700],
         onPressed: () {
           Navigator.pushNamed(context, '/character_creation');
         },
