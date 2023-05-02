@@ -45,7 +45,7 @@ class CharacterSheetPage extends StatelessWidget {
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(80,40,80,40),
+              margin: EdgeInsets.fromLTRB(40,40,40,40),
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
@@ -70,10 +70,20 @@ class CharacterSheetPage extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("0",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("0",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("0",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("0",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                          Container(
+                            margin: EdgeInsets.all(20),
+                            padding: EdgeInsets.all(10),
+                            color: Colors.white60,
+                            child:
+                            Column(
+                              children: [
+                                Text("0",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                                Text("0",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                                Text("0",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                                Text("0",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ],
@@ -82,8 +92,8 @@ class CharacterSheetPage extends StatelessWidget {
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(80,40,80,40),
-              padding: EdgeInsets.fromLTRB(80,40,80,40),
+              margin: EdgeInsets.all(30),
+              padding: EdgeInsets.all(1),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
                   color: Colors.grey[400]
@@ -93,7 +103,7 @@ class CharacterSheetPage extends StatelessWidget {
                   Text("Historia",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
                   Container(
                     margin: EdgeInsets.all(20),
-                    padding: EdgeInsets.all(240),
+                    padding: EdgeInsets.all(60),
                     color: Colors.white60,
                     child: Text("CONTENIDO DE LA HISTORIA"),
                   )
@@ -101,8 +111,8 @@ class CharacterSheetPage extends StatelessWidget {
               ),
             ),
             Container(
-              margin: EdgeInsets.fromLTRB(80,40,80,40),
-              padding: EdgeInsets.all(20),
+              margin: EdgeInsets.fromLTRB(40,40,40,40),
+              padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
                   color: Colors.grey[400]
@@ -128,12 +138,22 @@ class CharacterSheetPage extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                          Container(
+                              margin: EdgeInsets.all(20),
+                              padding: EdgeInsets.all(10),
+                              color: Colors.white60,
+                            child:
+                              Column(
+                                children: [
+                                  Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                                  Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                                  Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                                  Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                                  Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                                  Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                                ],
+                              ),
+                          ),
                         ],
                       ),
                     ],
@@ -150,7 +170,7 @@ class CharacterSheetPage extends StatelessWidget {
           FloatingActionButton(
             backgroundColor: Colors.grey[400],
             onPressed: () {
-              // Implementar la lógica de borrado aquí
+              Navigator.pushNamed(context, '/character_creation');
             },
             child: Icon(Icons.edit,size: 30,color: Colors.grey[800],),
           ),
