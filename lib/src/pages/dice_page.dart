@@ -30,8 +30,8 @@ class _DicePageState extends State<DicePage> {
         appBar: AppBar(
           centerTitle: true,
           elevation: 0,
-          title: Text('Dados',style: TextStyle(fontSize: 40,color: Colors.grey[400])),
-          backgroundColor: Colors.grey.shade800,
+          title: Text('Dados',style: TextStyle(fontSize: 40,color: Colors.grey[800])),
+          backgroundColor: Colors.grey.shade400,
         ),
         body: SafeArea(
           child: Column(

@@ -5,8 +5,10 @@ class CharacterListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Lista de Personajes'),
-        backgroundColor: Colors.grey[800],
+        centerTitle: true,
+        elevation: 0,
+        title: Text('Lista de Personajes',style: TextStyle(fontSize: 40,color: Colors.grey[800])),
+        backgroundColor: Colors.grey.shade400,
       ),
       body: ListView.builder(
         padding: EdgeInsets.all(30),
