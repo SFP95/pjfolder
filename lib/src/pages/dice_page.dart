@@ -28,6 +28,9 @@ class _DicePageState extends State<DicePage> {
       child: Scaffold(
         backgroundColor: Colors.grey[400],
         appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Colors.grey[800]
+          ),
           centerTitle: true,
           elevation: 0,
           title: Text('Dados',style: TextStyle(fontSize: 40,color: Colors.grey[800])),

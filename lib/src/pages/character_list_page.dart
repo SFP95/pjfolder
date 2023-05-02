@@ -6,6 +6,9 @@ class CharacterListPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[800],
       appBar: AppBar(
+        iconTheme: IconThemeData(
+            color: Colors.grey[400]
+        ),
         centerTitle: true,
         elevation: 0,
         title: Text('Lista de Personajes',style: TextStyle(fontSize: 40,color: Colors.grey[400])),
