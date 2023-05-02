@@ -54,7 +54,7 @@ class _DicePageState extends State<DicePage> {
                     Divider(height: 20),
                     DropdownButton<int>(
                       dropdownColor: Colors.grey[800],
-                      style: TextStyle(color: Colors.grey),
+                      style: TextStyle(color: Colors.grey[400],fontSize: 30),
                       borderRadius: BorderRadius.circular(30),
                       value: _selectedDice,
                       items: [4, 6, 8, 12, 20].map<DropdownMenuItem<int>>((int value) {
@@ -84,11 +84,24 @@ class _DicePageState extends State<DicePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text("Nº de Dados:",style: TextStyle(fontSize: 30,color: Colors.grey[400])),
+                    Divider(height: 25,color: Colors.grey[800]),
                     TextFormField(
-                      textAlign: TextAlign.center,
-                      decoration: InputDecoration(
-                        hoverColor: Colors.grey,
+                      style: TextStyle(
+                         fontSize: 25,
+                        color: Colors.grey[400]
                       ),
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.all(5),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(color: Colors.grey[400]!),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                          borderSide: BorderSide(color: Colors.grey.shade200),
+                        ),
+                      ),
+                      textAlign: TextAlign.center,
                       initialValue: '0',
                       keyboardType: TextInputType.number,
                       onChanged: (String newValue) {
@@ -118,7 +131,7 @@ class _DicePageState extends State<DicePage> {
                       onPressed: _rollDice,
                       child: Text('Tirar dados',style: TextStyle(fontSize: 30,color: Colors.grey[400])),
                     ),
-                    Text('Resultado: $_result'),
+                    Text('Resultado: $_result',style: TextStyle(fontSize: 30,color: Colors.grey[400])),
                   ],
                 ),
               ),
