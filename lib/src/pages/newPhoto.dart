@@ -1,4 +1,3 @@
-import 'dart:html';
 import 'dart:io' as io;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -9,14 +8,14 @@ class NewPhoto extends StatefulWidget {
 }
 
 class _NewPhotoState extends State<NewPhoto> {
-  late File _image;
+  late io.File _image;
 
   Future<void> _getImageFromCamera() async {
     final pickedFile = await ImagePicker().getImage(source: ImageSource.camera);
 
     if (pickedFile != null) {
       setState(() {
-        _image = io.File(pickedFile.path) as File;
+        _image = io.File(pickedFile.path) as io.File;
       });
     }
   }
@@ -26,7 +25,7 @@ class _NewPhotoState extends State<NewPhoto> {
 
     if (pickedFile != null) {
       setState(() {
-        _image = io.File(pickedFile.path) as File;
+        _image = io.File(pickedFile.path) as io.File;
       });
     }
   }
@@ -63,13 +62,13 @@ class _NewPhotoState extends State<NewPhoto> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          if (_image != null)
+          //if (_image != null)
             Container(
               height: 200,
               width: 200,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: FileImage(_image as io.File),
+                  image: FileImage('https://via.placeholder.com/150' as io.File), //_image as io.File  /el erroa da aqui
                   fit: BoxFit.cover,
                 ),
               ),
