@@ -20,13 +20,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
       title: 'RGS - Role Game System',
-      theme: ThemeData(
-        primaryColor: Colors.grey.shade800, // Color primario
-        accentColor: Colors.grey.shade800, // Color secundario
-        backgroundColor: Colors.grey, // Color de fondo
-        errorColor: Colors.red.shade400, // Color de alerta
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
       routes: {
         '/':(context)=> HomePage(),
         '/login':(context)=> LoginPage(),
