@@ -1,3 +1,4 @@
+import 'package:RGS/src/pages/newPhoto.dart';
 import 'package:flutter/material.dart';
 import 'package:RGS/src/pages/Home_page.dart';
 import 'package:RGS/src/pages/character_creation_page.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         '/login':(context)=> LoginPage(),
         '/register': (context) => RegisterPage(),
         '/gallery': (context) => GalleryPage(),
-        //'/newPhoto': (context) => NewPhoto(),
+        '/newPhoto': (context) => NewPhoto(),
         '/dice': (context) => DicePage(),
         '/characters_list': (context) => CharacterListPage(),
         '/character_sheet': (context) => CharacterSheetPage(),

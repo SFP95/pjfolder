@@ -34,8 +34,7 @@ class GalleryPage extends StatelessWidget {
       ),
     floatingActionButton: FloatingActionButton(
     onPressed: () {
-      Navigator.pushNamed(context, '/newImg');
-    // Implementar la lógica para agregar imágenes aquí
+      Navigator.pushNamed(context, '/newPhoto');
     },
     child: Icon(Icons.add,color: Colors.grey.shade400,),
     ),
