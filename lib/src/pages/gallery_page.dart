@@ -6,9 +6,20 @@ class GalleryPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[400],
         appBar: AppBar(
+          iconTheme: IconThemeData(
+            color: Colors.grey[800],
+            size: 30,
+          ),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios_rounded), // Icono a mostrar
+            onPressed: () {
+              Navigator.popAndPushNamed(context, '/home');
+            },
+          ),
+          elevation: 0,
           centerTitle: true,
-          backgroundColor: Colors.grey.shade800,
-          title: Text('Galería',style: TextStyle(fontSize: 20,color: Colors.grey[400])),
+          backgroundColor: Colors.grey.shade400,
+          title: Text('Galería',style: TextStyle(fontSize: 20,color: Colors.grey[800])),
     ),
     body: GridView.count(
       padding: EdgeInsets.all(40),

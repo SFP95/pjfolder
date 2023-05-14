@@ -29,7 +29,14 @@ class _DicePageState extends State<DicePage> {
         backgroundColor: Colors.grey[400],
         appBar: AppBar(
           iconTheme: IconThemeData(
-            color: Colors.grey[800]
+            color: Colors.grey[800],
+            size: 30,
+          ),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back_ios_rounded), // Icono a mostrar
+            onPressed: () {
+              Navigator.popAndPushNamed(context, '/home');
+            },
           ),
           centerTitle: true,
           elevation: 0,

@@ -7,7 +7,14 @@ class CharacterListPage extends StatelessWidget {
       backgroundColor: Colors.grey[800],
       appBar: AppBar(
         iconTheme: IconThemeData(
-            color: Colors.grey[400]
+          color: Colors.grey[400],
+          size: 30,
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios_rounded), // Icono a mostrar
+          onPressed: () {
+            Navigator.popAndPushNamed(context, '/home');
+          },
         ),
         centerTitle: true,
         elevation: 0,
