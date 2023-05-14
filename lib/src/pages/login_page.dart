@@ -9,6 +9,29 @@ class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
+  /**
+   *  void btnPressed(BuildContext context) async{
+      //print("FUNCIONO  --  "+inputUser.getText()+"--"+ inputPss.getText());
+      try {
+      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: inputUser.getText(),
+      password: inputPss.getText(),
+      );
+      //print(' -- ESTOY DENTRO ---- Bienvenido '+inputUser.getText());
+      Navigator.of(context).popAndPushNamed('/onBoarding');
+
+      } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+      txt.text="----- The password provided is too weak -----";
+      } else if (e.code == 'email-already-in-use') {
+      txt.text="---- Ya existe una cuenta con ese email -----";
+      }
+      } catch (e) {
+      print(" NO FUNCIONO "+e.toString());
+      }
+      }
+   */
+
   @override
   void dispose() {
     _emailController.dispose();
@@ -75,7 +98,34 @@ class _LoginPageState extends State<LoginPage> {
                     backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
                    ),
                   onPressed: () {
-                    // Implementar la lógica de inicio de sesión aquí
+                    /**
+                     * ()async{
+                        print("FUNCIONO  --  "+inputUser.getText() +" -- "+inputPsswd.getText());
+
+                        try {
+                        final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                        email: inputUser.getText(),
+                        password: inputPsswd.getText(),
+                        );
+                        print(' -- ESTOY DENTRO ---- Bienvenido '+inputUser.getText()+ "---"+ inputPsswd.getText());
+                        Navigator.of(context).popAndPushNamed('/home');
+
+                        } on FirebaseAuthException catch (e) {
+                        if (e.code == 'weak-password') {
+                        print('----- La contraseña es debil -----');
+                        } else if (e.code == 'email-already-in-use') {
+                        print('---- Ya existe una cuenta con ese email -----');
+                        } else if (e.code == 'user-not-found') {
+                        print("---- No encuentro al usuario ----- ");
+                        } else if (e.code == 'wrong-password') {
+                        print("---- La contraseña no coincide ----- ");
+                        }
+                        print(e.code); //Add this line to see other firebase exceptions.
+                        } catch (e) {
+                        print(e);
+                        }
+                        },
+                     */
                   },
                   child: Text('Iniciar sesión', style: TextStyle(color: Colors.grey[800],fontSize: 20)),
                 ),

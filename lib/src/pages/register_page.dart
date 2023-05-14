@@ -10,6 +10,29 @@ class _RegisterPageState extends State<RegisterPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
+  /**
+   *  void btnPressed(BuildContext context) async{
+      //print("FUNCIONO  --  "+inputUser.getText()+"--"+ inputPss.getText());
+      try {
+      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: inputUser.getText(),
+      password: inputPss.getText(),
+      );
+      //print(' -- ESTOY DENTRO ---- Bienvenido '+inputUser.getText());
+      Navigator.of(context).popAndPushNamed('/onBoarding');
+
+      } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+      txt.text="----- The password provided is too weak -----";
+      } else if (e.code == 'email-already-in-use') {
+      txt.text="---- Ya existe una cuenta con ese email -----";
+      }
+      } catch (e) {
+      print(" NO FUNCIONO "+e.toString());
+      }
+      }
+   */
+
   @override
   void dispose() {
     _usernameController.dispose();
@@ -60,7 +83,16 @@ class _RegisterPageState extends State<RegisterPage> {
                     backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
                   ),
                   onPressed: () {
-                    // Implementar la lógica de registro aquí
+                    /**
+                     *  onPressed:(){
+                        if(inputPss.getText()==inputRpPss.getText()){
+                        btnPressed(context);
+                        }else{
+                        txt.text="ERROR! LAS CONSTRASELAS NO COINCIDEN";
+                        }
+                        },
+
+                     */
                   },
                   child: Text('Registrarse', style: TextStyle(color: Colors.grey[800],fontSize: 20)),
                 ),
