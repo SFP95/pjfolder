@@ -63,7 +63,7 @@ class _NewPhotoState extends State<NewPhoto> {
         elevation: 0,
         centerTitle: true,
         backgroundColor: Colors.grey.shade400,
-        title: Text('New Img',style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+        title: Text('New Img',style: TextStyle(fontSize: 40,color: Colors.grey[800])),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

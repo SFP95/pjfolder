@@ -11,7 +11,7 @@ class CharacterSheetPage extends StatelessWidget {
         ),
         centerTitle: true,
         elevation: 0,
-        title: Text('Ficha de Personaje',style: TextStyle(fontSize: 40,color: Colors.grey[400])),
+        title: Text('Ficha de Personaje',style: TextStyle(fontSize: 30,color: Colors.grey[400])),
         backgroundColor: Colors.grey.shade800,
       ),
       body: SingleChildScrollView(
