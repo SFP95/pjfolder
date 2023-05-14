@@ -10,6 +10,12 @@ class NewPhoto extends StatefulWidget {
 class _NewPhotoState extends State<NewPhoto> {
   late io.File _image;
 
+  @override
+  void initState() {
+    super.initState();
+    _image = io.File('path/to/default/image.jpg'); // asigna un valor predeterminado
+  }
+
   Future<void> _getImageFromCamera() async {
     final pickedFile = await ImagePicker().getImage(source: ImageSource.camera);
 
@@ -68,28 +74,47 @@ class _NewPhotoState extends State<NewPhoto> {
               width: 200,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: FileImage('https://via.placeholder.com/150' as io.File), //_image as io.File  /el erroa da aqui
+                  image: FileImage(_image as io.File), //_image as io.File  /el erroa da aqui
                   fit: BoxFit.cover,
                 ),
               ),
             ),
-          SizedBox(height: 20),
-          ElevatedButton.icon(
-            onPressed: _getImageFromCamera,
-            icon: Icon(Icons.camera_alt),
-            label: Text('Tomar foto'),
-          ),
-          SizedBox(height: 20),
-          ElevatedButton.icon(
-            onPressed: _getImageFromGallery,
-            icon: Icon(Icons.image),
-            label: Text('Elegir de galería'),
-          ),
-          SizedBox(height: 20),
-          ElevatedButton.icon(
-            onPressed: _uploadImage,
-            icon: Icon(Icons.cloud_upload),
-            label: Text('Subir imagen'),
+          SizedBox(height: 100),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton.icon(
+                    style:  ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade800),
+                    ),
+                    onPressed: _getImageFromCamera,
+                    icon: Icon(Icons.camera_alt, color: Colors.grey[400]),
+                    label: Text('Tomar foto', style: TextStyle(color: Colors.grey[400],fontSize: 20)),
+                  ),
+
+                  ElevatedButton.icon(
+                    style:  ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade800),
+                    ),
+                    onPressed: _getImageFromGallery,
+                    icon: Icon(Icons.image, color: Colors.grey[400]),
+                    label: Text('Elegir de galería', style: TextStyle(color: Colors.grey[400],fontSize: 20)),
+                  ),
+                ],
+              ),
+
+              ElevatedButton.icon(
+                style:  ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade800),
+                ),
+                onPressed: _uploadImage,
+                icon: Icon(Icons.cloud_upload, color: Colors.grey[400]),
+                label: Text('Subir imagen', style: TextStyle(color: Colors.grey[400],fontSize: 20)),
+              ),
+            ],
           ),
         ],
       )
