@@ -20,7 +20,20 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[800],
-
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.grey[800],
+        iconTheme: IconThemeData(
+          color: Colors.grey[400],
+          size: 30,
+        ),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios_rounded), // Icono a mostrar
+          onPressed: () {
+            Navigator.popAndPushNamed(context, '/home');
+          },
+        ),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
