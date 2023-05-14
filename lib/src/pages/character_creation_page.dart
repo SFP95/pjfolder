@@ -13,6 +13,41 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
     // Libera los recursos de los controladores aquí
     super.dispose();
   }
+  Widget customTextField(String hintText, bool isNumeric) {
+    return TextFormField(
+      keyboardType: isNumeric ? TextInputType.number : TextInputType.text,
+      validator: (value) {
+        if (value!.isEmpty) {
+          return 'Please enter some text';
+        }
+        if (isNumeric) {
+          final number = num.tryParse(value);
+          if (number == null) {
+            return 'Please enter a valid number';
+          }
+        }
+        return null;
+      },
+      decoration: InputDecoration(
+        hintText: hintText,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(
+            width: 1,
+            color: Colors.grey.shade800,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(
+            width: 2,
+            color: Colors.grey.shade800,
+          ),
+        ),
+      ),
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -40,24 +75,29 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  CircleAvatar(
-                      maxRadius: 80,
+                  /*CircleAvatar(
+                      maxRadius: 50,
                       backgroundColor: Colors.grey[800],
                       child: Image.asset("assets/images/perfil.png",color: Colors.grey[400],) //la ruta de ima imagen que debe se cogida de la galeria
-                  ),
+                  ),*/
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text("NOMBRE",style: TextStyle(fontSize: 30,color: Colors.grey[800])),
-                      Text("APELLIDO",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
-                      Text("RAZA",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                      Text("EDAD",style: TextStyle(fontSize: 15,color: Colors.grey[800])),
+                      customTextField("Introduce el nombre", false),
+                      customTextField("Introduce el Apellido", false),
+                      customTextField("Introduce la edad", true),
+                      customTextField("Introduce la raza", false),
+
+                      //Text("NOMBRE",style: TextStyle(fontSize: 30,color: Colors.grey[800])),
+                      //Text("APELLIDO",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
+                      //Text("RAZA",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                      //Text("EDAD",style: TextStyle(fontSize: 15,color: Colors.grey[800])),
                     ],
                   ),
                 ],
               ),
             ),
-            Container(
+          /*  Container(
               margin: EdgeInsets.fromLTRB(40,40,40,40),
               padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
@@ -173,7 +213,7 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
                   )
                 ],
               ),
-            ),
+            ),*/
           ],
         ),
       ),
