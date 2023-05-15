@@ -1,5 +1,6 @@
 import 'package:RGS/src/pages/character_edit_page.dart';
 import 'package:RGS/src/pages/newPhoto.dart';
+import 'package:RGS/src/pages/profile_user_log.dart';
 import 'package:flutter/material.dart';
 import 'package:RGS/src/pages/Home_page.dart';
 import 'package:RGS/src/pages/character_creation_page.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
       title: 'RGS - Role Game System',
+      initialRoute: '/',
       routes: {
         '/':(context)=> HomePage(),
         '/login':(context)=> LoginPage(),
@@ -32,18 +34,8 @@ class MyApp extends StatelessWidget {
         '/character_sheet': (context) => CharacterSheetPage(),
         '/character_edit': (context) => CharacterEditPage(),
         '/character_creation': (context) => CharacterCreationPage(),
+        '/profile_UserLog': (context) => ProfileUserLog(),
       },
-      initialRoute: '/',
-      /*
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('RGS - Role Game System'),
-        ),
-        body: Center(
-          child: Text('Bienvenido a Role Game System'),
-        ),
-      ),*/
-
     );
   }
 }
