@@ -37,8 +37,8 @@ class CharacterSheetPage extends StatelessWidget {
                     children: [
                       Text("NOMBRE",style: TextStyle(fontSize: 30,color: Colors.grey[800])),
                       Text("APELLIDO",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
+                      Text("EDAD",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
                       Text("RAZA",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                      Text("EDAD",style: TextStyle(fontSize: 15,color: Colors.grey[800])),
                     ],
                   ),
                 ],
@@ -73,7 +73,7 @@ class CharacterSheetPage extends StatelessWidget {
                           Container(
                             margin: EdgeInsets.all(20),
                             padding: EdgeInsets.all(10),
-                            color: Colors.white60,
+
                             child:
                             Column(
                               children: [
@@ -122,7 +122,7 @@ class CharacterSheetPage extends StatelessWidget {
                           Container(
                               margin: EdgeInsets.all(20),
                               padding: EdgeInsets.all(10),
-                              color: Colors.white60,
+
                             child:
                               Column(
                                 children: [
@@ -144,7 +144,7 @@ class CharacterSheetPage extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.all(30),
-              padding: EdgeInsets.all(1),
+              padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
                   color: Colors.grey[400]
@@ -155,7 +155,6 @@ class CharacterSheetPage extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.all(20),
                     padding: EdgeInsets.all(60),
-                    color: Colors.white60,
                     child: Text("CONTENIDO DE LA HISTORIA"),
                   )
                 ],
@@ -170,7 +169,7 @@ class CharacterSheetPage extends StatelessWidget {
           FloatingActionButton(
             backgroundColor: Colors.grey[400],
             onPressed: () {
-              Navigator.pushNamed(context, '/character_creation');
+              Navigator.pushNamed(context, '/character_edit');
             },
             child: Icon(Icons.edit,size: 30,color: Colors.grey[800],),
           ),

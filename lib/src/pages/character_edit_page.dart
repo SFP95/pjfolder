@@ -2,13 +2,13 @@ import 'dart:io' as io;
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-class CharacterCreationPage extends StatefulWidget {
+class CharacterEditPage extends StatefulWidget {
 
   @override
-  _CharacterCreationPageState createState() => _CharacterCreationPageState();
+  _CharacterEditPageState createState() => _CharacterEditPageState();
 }
 
-class _CharacterCreationPageState extends State<CharacterCreationPage> {
+class _CharacterEditPageState extends State<CharacterEditPage> {
   late String _selectedRace = 'Gnomo';
   String _historiaValue = '';
   @override
@@ -90,7 +90,7 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
         ),
         centerTitle: true,
         elevation: 0,
-        title: Text('Creación de Personaje',style: TextStyle(fontSize: 25,color: Colors.grey[400])),
+        title: Text('Editar ficha Personaje',style: TextStyle(fontSize: 25,color: Colors.grey[400])),
         backgroundColor: Colors.grey.shade800,
       ),
       body: SingleChildScrollView(
@@ -113,7 +113,7 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
                    height: 200,
                    decoration: BoxDecoration(
                      image: DecorationImage(
-                       image: AssetImage('assets/images/perfil.png') ,
+                       image: AssetImage('assets/images/perfil.png'),
                        fit: BoxFit.cover,
                      ),
                    ),
