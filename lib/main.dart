@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
       title: 'RGS - Role Game System',
-      initialRoute: '/',
+      initialRoute: '/profile_UserLog',
       routes: {
         '/':(context)=> HomePage(),
         '/login':(context)=> LoginPage(),
