@@ -92,25 +92,6 @@ class CharacterSheetPage extends StatelessWidget {
               ),
             ),
             Container(
-              margin: EdgeInsets.all(30),
-              padding: EdgeInsets.all(1),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: Colors.grey[400]
-              ),
-              child: Column(
-                children: [
-                  Text("Historia",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
-                  Container(
-                    margin: EdgeInsets.all(20),
-                    padding: EdgeInsets.all(60),
-                    color: Colors.white60,
-                    child: Text("CONTENIDO DE LA HISTORIA"),
-                  )
-                ],
-              ),
-            ),
-            Container(
               margin: EdgeInsets.fromLTRB(40,40,40,40),
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
@@ -157,6 +138,25 @@ class CharacterSheetPage extends StatelessWidget {
                         ],
                       ),
                     ],
+                  )
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.all(30),
+              padding: EdgeInsets.all(1),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: Colors.grey[400]
+              ),
+              child: Column(
+                children: [
+                  Text("Historia",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
+                  Container(
+                    margin: EdgeInsets.all(20),
+                    padding: EdgeInsets.all(60),
+                    color: Colors.white60,
+                    child: Text("CONTENIDO DE LA HISTORIA"),
                   )
                 ],
               ),

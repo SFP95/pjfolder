@@ -9,34 +9,16 @@ class CharacterCreationPage extends StatefulWidget {
 
 class _CharacterCreationPageState extends State<CharacterCreationPage> {
   late String _selectedRace = 'Gnomo';
-  late String _imagePath;
   @override
   void dispose() {
     // Libera los recursos de los controladores aquí
     super.dispose();
   }
-  @override
-  void initState() {
-    super.initState();
-    // Asignar una imagen predeterminada al inicio
-    _imagePath = 'assets/images/perfil.png';
-  }
 
-  late io.File? _image;
-  final picker = ImagePicker();
-
-  Future<void> _pickImage() async {
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
-
-    if (pickedFile != null) {
-      setState(() {
-        _image = io.File(pickedFile.path);
-      });
-    }
-  }
 
   Widget customTextField(String hintText, bool isNumeric) {
     return TextFormField(
+      textAlign: TextAlign.center,
       keyboardType: isNumeric ? TextInputType.number : TextInputType.text,
       validator: (value) {
         if (value!.isEmpty) {
@@ -90,29 +72,24 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             Container(
-              padding: EdgeInsets.all(10),
+              margin: EdgeInsets.all(20),
+              padding: EdgeInsets.all(30),
               decoration: BoxDecoration(
-                  color: Colors.grey[400]
+                  color: Colors.grey[400],
+                  borderRadius: BorderRadius.circular(50)
               ),
              child: Column(
                mainAxisAlignment: MainAxisAlignment.center,
                children: [
-                 Divider(height: 30,color: Colors.grey[400]),
                  Container(
                    width: 200,
                    height: 200,
                    decoration: BoxDecoration(
                      image: DecorationImage(
-                       image: _image != null
-                           ? FileImage(_image!)
-                           : AssetImage('assets/images/perfil.png') as ImageProvider,
+                       image: AssetImage('assets/images/perfil.png') ,
                        fit: BoxFit.cover,
                      ),
                    ),
-                 ),
-                 ElevatedButton(
-                   onPressed: _pickImage,
-                   child: Text('Seleccionar imagen'),
                  ),
                  Divider(height: 30,color: Colors.grey[400]),
                  customTextField("Introduce el nombre", false),
@@ -158,17 +135,76 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
                      ),
                    ],
                  ),
-
-
-                 //Text("NOMBRE",style: TextStyle(fontSize: 30,color: Colors.grey[800])),
-                 //Text("APELLIDO",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
-                 //Text("RAZA",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                 //Text("EDAD",style: TextStyle(fontSize: 15,color: Colors.grey[800])),
-
                ],
              ),
             ),
+          Container(
+            margin: EdgeInsets.all(20),
+            padding: EdgeInsets.all(30),
+            decoration: BoxDecoration(
+                color: Colors.grey[400],
+                borderRadius: BorderRadius.circular(50)
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Estadisticas",style: TextStyle(fontSize: 30,color: Colors.grey[800])),
+                Divider(height: 30,color: Colors.grey[400]),
+                customTextField("Velocidad", true),
+                Divider(height: 30,color: Colors.grey[400]),
+                customTextField("Fuerza", true),
+                Divider(height: 30,color: Colors.grey[400]),
+                customTextField("Agilidad", true),
+                Divider(height: 30,color: Colors.grey[400]),
+                customTextField("Inteligencia", true),
 
+              ],
+            ),
+          ),
+            Container(
+              margin: EdgeInsets.all(20),
+              padding: EdgeInsets.all(30),
+              decoration: BoxDecoration(
+                  color: Colors.grey[400],
+                  borderRadius: BorderRadius.circular(50)
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Características",style: TextStyle(fontSize: 30,color: Colors.grey[800])),
+                  Divider(height: 30,color: Colors.grey[400]),
+                  customTextField("Pelo", false),
+                  Divider(height: 30,color: Colors.grey[400]),
+                  customTextField("Piel", false),
+                  Divider(height: 30,color: Colors.grey[400]),
+                  customTextField("Rasgos", false),
+                  Divider(height: 30,color: Colors.grey[400]),
+                  customTextField("Vestimenta", false),
+                  Divider(height: 30,color: Colors.grey[400]),
+                  customTextField("Caracter", false),
+                  Divider(height: 30,color: Colors.grey[400]),
+                  customTextField("Mascota", false),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.all(20),
+              padding: EdgeInsets.all(30),
+              decoration: BoxDecoration(
+                  color: Colors.grey[400],
+                  borderRadius: BorderRadius.circular(50)
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Historia",style: TextStyle(fontSize: 30,color: Colors.grey[800])),
+                  Divider(height: 30,color: Colors.grey[400]),
+                  customTextField("Contenido", true),
+
+
+                ],
+              ),
+            ),
           /*  Container(
               margin: EdgeInsets.fromLTRB(40,40,40,40),
               padding: EdgeInsets.all(20),
@@ -293,17 +329,19 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
+            backgroundColor: Colors.grey[700],
             onPressed: () {
               // Implementar la lógica de guardado aquí
             },
-            child: Icon(Icons.save),
+            child: Icon(Icons.save,color: Colors.grey[400],),
           ),
           SizedBox(width: 10),
           FloatingActionButton(
+            backgroundColor: Colors.grey[700],
             onPressed: () {
               Navigator.pop(context);
             },
-            child: Icon(Icons.cancel),
+            child: Icon(Icons.cancel,color: Colors.grey[400]),
           ),
         ],
       ),
