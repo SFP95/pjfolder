@@ -63,7 +63,7 @@ class _NewPhotoState extends State<NewPhoto> {
         elevation: 0,
         centerTitle: true,
         backgroundColor: Colors.grey.shade400,
-        title: Text('New Img',style: TextStyle(fontSize: 40,color: Colors.grey[800])),
+        title: Text('Nueva Imagen',style: TextStyle(fontSize: 30,color: Colors.grey[800])),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -80,41 +80,36 @@ class _NewPhotoState extends State<NewPhoto> {
               ),
             ),
           SizedBox(height: 100),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton.icon(
-                    style:  ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade800),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                ElevatedButton.icon(
+                  style:  ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade800),
+                    shape:  MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
                     ),
-                    onPressed: _getImageFromCamera,
-                    icon: Icon(Icons.camera_alt, color: Colors.grey[400]),
-                    label: Text('Tomar foto', style: TextStyle(color: Colors.grey[400],fontSize: 20)),
                   ),
-
-                  ElevatedButton.icon(
-                    style:  ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade800),
-                    ),
-                    onPressed: _getImageFromGallery,
-                    icon: Icon(Icons.image, color: Colors.grey[400]),
-                    label: Text('Elegir de galería', style: TextStyle(color: Colors.grey[400],fontSize: 20)),
-                  ),
-                ],
-              ),
-
-              ElevatedButton.icon(
-                style:  ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade800),
+                  onPressed: _getImageFromGallery,
+                  icon: Icon(Icons.image, color: Colors.grey[400]),
+                  label: Text('Galería', style: TextStyle(color: Colors.grey[400],fontSize: 25)),
                 ),
-                onPressed: _uploadImage,
-                icon: Icon(Icons.cloud_upload, color: Colors.grey[400]),
-                label: Text('Subir imagen', style: TextStyle(color: Colors.grey[400],fontSize: 20)),
-              ),
-            ],
+                ElevatedButton.icon(
+                  style:  ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade800),
+                    shape:  MaterialStateProperty.all<RoundedRectangleBorder>(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                    ),
+                  ),
+                  onPressed: _uploadImage,
+                  icon: Icon(Icons.cloud_upload, color: Colors.grey[400]),
+                  label: Text('Subir', style: TextStyle(color: Colors.grey[400],fontSize: 25)),
+                ),
+              ],
           ),
         ],
       )

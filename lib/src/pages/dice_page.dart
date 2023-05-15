@@ -40,7 +40,7 @@ class _DicePageState extends State<DicePage> {
           ),
           centerTitle: true,
           elevation: 0,
-          title: Text('Dados',style: TextStyle(fontSize: 40,color: Colors.grey[800])),
+          title: Text('Dados',style: TextStyle(fontSize: 30,color: Colors.grey[800])),
           backgroundColor: Colors.grey.shade400,
         ),
         body: SafeArea(
@@ -136,12 +136,17 @@ class _DicePageState extends State<DicePage> {
                   children: [
                     ElevatedButton(
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade800),
+                        backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade900),
+                        shape:  MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
                       ),
                       onPressed: _rollDice,
-                      child: Text('Tirar dados',style: TextStyle(fontSize: 20,color: Colors.grey[400])),
+                      child: Text('Tirar ',style: TextStyle(fontSize: 25,color: Colors.grey[400])),
                     ),
-                    Text('Resultado: $_result',style: TextStyle(fontSize: 20,color: Colors.grey[400])),
+                    Text('Resultado:    $_result',style: TextStyle(fontSize: 23,color: Colors.grey[400])),
                   ],
                 ),
               ),

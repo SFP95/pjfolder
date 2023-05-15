@@ -19,7 +19,7 @@ class GalleryPage extends StatelessWidget {
           elevation: 0,
           centerTitle: true,
           backgroundColor: Colors.grey.shade400,
-          title: Text('Galería',style: TextStyle(fontSize: 40,color: Colors.grey[800])),
+          title: Text('Galería',style: TextStyle(fontSize: 30,color: Colors.grey[800])),
     ),
     body: GridView.count(
       padding: EdgeInsets.all(40),
@@ -33,6 +33,7 @@ class GalleryPage extends StatelessWidget {
         }),
       ),
     floatingActionButton: FloatingActionButton(
+      backgroundColor: Colors.grey[800],
     onPressed: () {
       Navigator.pushNamed(context, '/newPhoto');
     },

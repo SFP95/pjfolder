@@ -130,8 +130,8 @@ class _CharacterEditPageState extends State<CharacterEditPage> {
                    children: [
                      Text("Raza: ",style: TextStyle(color: Colors.grey[800], fontSize: 20)),
                      DropdownButton<String>(
-                       dropdownColor: Colors.grey[800],
-                       style: TextStyle(color: Colors.grey[400], fontSize: 20),
+                       dropdownColor: Colors.grey[500],
+                       style: TextStyle(color: Colors.grey[900], fontSize: 20),
                        borderRadius: BorderRadius.circular(30),
                        value: _selectedRace,
                        items: [
