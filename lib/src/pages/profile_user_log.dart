@@ -27,7 +27,7 @@ class _ProfileUserLogState extends State<ProfileUserLog> {
           children: [
             Container(
               margin: EdgeInsets.all(20),
-              padding: EdgeInsets.all(30),
+              padding: EdgeInsets.all(20),
               decoration: BoxDecoration(
                   color: Colors.grey[400],
                   borderRadius: BorderRadius.circular(50)
