@@ -1,4 +1,6 @@
+import 'dart:io' as io;
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 class CharacterCreationPage extends StatefulWidget {
   @override
@@ -6,13 +8,33 @@ class CharacterCreationPage extends StatefulWidget {
 }
 
 class _CharacterCreationPageState extends State<CharacterCreationPage> {
-  // Agrega aquí los controladores y variables para los campos de entrada
-
+  late String _selectedRace = 'Gnomo';
+  late String _imagePath;
   @override
   void dispose() {
     // Libera los recursos de los controladores aquí
     super.dispose();
   }
+  @override
+  void initState() {
+    super.initState();
+    // Asignar una imagen predeterminada al inicio
+    _imagePath = 'assets/images/perfil.png';
+  }
+
+  late io.File? _image;
+  final picker = ImagePicker();
+
+  Future<void> _pickImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      setState(() {
+        _image = io.File(pickedFile.path);
+      });
+    }
+  }
+
   Widget customTextField(String hintText, bool isNumeric) {
     return TextFormField(
       keyboardType: isNumeric ? TextInputType.number : TextInputType.text,
@@ -31,9 +53,9 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
       decoration: InputDecoration(
         hintText: hintText,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(20),
           borderSide: BorderSide(
-            width: 1,
+            width: 2,
             color: Colors.grey.shade800,
           ),
         ),
@@ -72,31 +94,81 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
               decoration: BoxDecoration(
                   color: Colors.grey[400]
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  /*CircleAvatar(
-                      maxRadius: 50,
-                      backgroundColor: Colors.grey[800],
-                      child: Image.asset("assets/images/perfil.png",color: Colors.grey[400],) //la ruta de ima imagen que debe se cogida de la galeria
-                  ),*/
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      customTextField("Introduce el nombre", false),
-                      customTextField("Introduce el Apellido", false),
-                      customTextField("Introduce la edad", true),
-                      customTextField("Introduce la raza", false),
+             child: Column(
+               mainAxisAlignment: MainAxisAlignment.center,
+               children: [
+                 Divider(height: 30,color: Colors.grey[400]),
+                 Container(
+                   width: 200,
+                   height: 200,
+                   decoration: BoxDecoration(
+                     image: DecorationImage(
+                       image: _image != null
+                           ? FileImage(_image!)
+                           : AssetImage('assets/images/perfil.png') as ImageProvider,
+                       fit: BoxFit.cover,
+                     ),
+                   ),
+                 ),
+                 ElevatedButton(
+                   onPressed: _pickImage,
+                   child: Text('Seleccionar imagen'),
+                 ),
+                 Divider(height: 30,color: Colors.grey[400]),
+                 customTextField("Introduce el nombre", false),
+                 Divider(height: 30,color: Colors.grey[400]),
+                 customTextField("Introduce el Apellido", false),
+                 Divider(height: 30,color: Colors.grey[400]),
+                 customTextField("Introduce la edad", true),
+                 Divider(height: 30,color: Colors.grey[400]),
+                 Row(
+                   mainAxisAlignment: MainAxisAlignment.center,
+                   children: [
+                     Text("Raza: ",style: TextStyle(color: Colors.grey[800], fontSize: 20)),
+                     DropdownButton<String>(
+                       dropdownColor: Colors.grey[800],
+                       style: TextStyle(color: Colors.grey[400], fontSize: 20),
+                       borderRadius: BorderRadius.circular(30),
+                       value: _selectedRace,
+                       items: [
+                         'Gnomo',
+                         'Elfo',
+                         'Mago',
+                         'Nigromante',
+                         'Enano',
+                         'Dracónido',
+                         'Semiorco',
+                         'Humano',
+                         'Mediano',
+                         'Semielfo',
+                         'Tiflin',
+                       ].map<DropdownMenuItem<String>>(
+                             (String value) {
+                           return DropdownMenuItem<String>(
+                             value: value,
+                             child: Text(value),
+                           );
+                         },
+                       ).toList(),
+                       onChanged: (String? newValue) {
+                         setState(() {
+                           _selectedRace = newValue ?? 'gnomo';
+                         });
+                       },
+                     ),
+                   ],
+                 ),
 
-                      //Text("NOMBRE",style: TextStyle(fontSize: 30,color: Colors.grey[800])),
-                      //Text("APELLIDO",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
-                      //Text("RAZA",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                      //Text("EDAD",style: TextStyle(fontSize: 15,color: Colors.grey[800])),
-                    ],
-                  ),
-                ],
-              ),
+
+                 //Text("NOMBRE",style: TextStyle(fontSize: 30,color: Colors.grey[800])),
+                 //Text("APELLIDO",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
+                 //Text("RAZA",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                 //Text("EDAD",style: TextStyle(fontSize: 15,color: Colors.grey[800])),
+
+               ],
+             ),
             ),
+
           /*  Container(
               margin: EdgeInsets.fromLTRB(40,40,40,40),
               padding: EdgeInsets.all(20),
