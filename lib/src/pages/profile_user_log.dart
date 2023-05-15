@@ -61,8 +61,8 @@ class _ProfileUserLogState extends State<ProfileUserLog> {
               child: Column(
                 children: [
                   Divider(height: 50,color: Colors.grey[800]),
-                  ProfileMenuWidget(icon: Icons.settings,title: "Settings" ,textColor:Colors.grey[400] ,endIcon: false, onPress: () {  },),
-                  ProfileMenuWidget(icon: Icons.info,title: "Information" ,textColor:Colors.grey[400] ,endIcon: false, onPress: () {  },),
+                  ProfileMenuWidget(icon: Icons.settings,title: "Ajustes" ,textColor:Colors.grey[400] ,endIcon: false, onPress: () {  },),
+                  ProfileMenuWidget(icon: Icons.info,title: "Información" ,textColor:Colors.grey[400] ,endIcon: false, onPress: () {  },),
                   const SizedBox(height: 10),
                   Divider(color: Colors.grey[500],endIndent: 0,indent: 0),
                   const SizedBox(height: 10),
