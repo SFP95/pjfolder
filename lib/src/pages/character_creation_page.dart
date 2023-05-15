@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CharacterCreationPage extends StatefulWidget {
+
   @override
   _CharacterCreationPageState createState() => _CharacterCreationPageState();
 }
 
 class _CharacterCreationPageState extends State<CharacterCreationPage> {
   late String _selectedRace = 'Gnomo';
+  String _historiaValue = '';
   @override
   void dispose() {
     // Libera los recursos de los controladores aquí
@@ -32,6 +34,31 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
         }
         return null;
       },
+      decoration: InputDecoration(
+        hintText: hintText,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          borderSide: BorderSide(
+            width: 2,
+            color: Colors.grey.shade800,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(
+            width: 2,
+            color: Colors.grey.shade800,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget customHistori(String hintText, bool isNumeric, Function(String) onChanged) {
+    return TextFormField(
+      textAlign: TextAlign.center,
+      keyboardType: isNumeric ? TextInputType.number : TextInputType.text,
+      onChanged: onChanged,
       decoration: InputDecoration(
         hintText: hintText,
         border: OutlineInputBorder(
@@ -138,7 +165,7 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
                ],
              ),
             ),
-          Container(
+            Container(
             margin: EdgeInsets.all(20),
             padding: EdgeInsets.all(30),
             decoration: BoxDecoration(
@@ -150,13 +177,13 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
               children: [
                 Text("Estadisticas",style: TextStyle(fontSize: 30,color: Colors.grey[800])),
                 Divider(height: 30,color: Colors.grey[400]),
-                customTextField("Velocidad", true),
+                customTextField("Valor de Velocidad", true),
                 Divider(height: 30,color: Colors.grey[400]),
-                customTextField("Fuerza", true),
+                customTextField("Valor de Fuerza", true),
                 Divider(height: 30,color: Colors.grey[400]),
-                customTextField("Agilidad", true),
+                customTextField("Valor de Agilidad", true),
                 Divider(height: 30,color: Colors.grey[400]),
-                customTextField("Inteligencia", true),
+                customTextField("Valor de Inteligencia", true),
 
               ],
             ),
@@ -173,17 +200,17 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
                 children: [
                   Text("Características",style: TextStyle(fontSize: 30,color: Colors.grey[800])),
                   Divider(height: 30,color: Colors.grey[400]),
-                  customTextField("Pelo", false),
+                  customTextField("Descripción de Pelo", false),
                   Divider(height: 30,color: Colors.grey[400]),
-                  customTextField("Piel", false),
+                  customTextField("Descripción de Piel", false),
                   Divider(height: 30,color: Colors.grey[400]),
-                  customTextField("Rasgos", false),
+                  customTextField("Descripción de Rasgos", false),
                   Divider(height: 30,color: Colors.grey[400]),
-                  customTextField("Vestimenta", false),
+                  customTextField("Descripción de Vestimenta", false),
                   Divider(height: 30,color: Colors.grey[400]),
-                  customTextField("Caracter", false),
+                  customTextField("Descripción de Caracter", false),
                   Divider(height: 30,color: Colors.grey[400]),
-                  customTextField("Mascota", false),
+                  customTextField("Descripción de Mascota", false),
                 ],
               ),
             ),
@@ -191,137 +218,26 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
               margin: EdgeInsets.all(20),
               padding: EdgeInsets.all(30),
               decoration: BoxDecoration(
-                  color: Colors.grey[400],
-                  borderRadius: BorderRadius.circular(50)
+                color: Colors.grey[400],
+                borderRadius: BorderRadius.circular(50),
               ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Historia",style: TextStyle(fontSize: 30,color: Colors.grey[800])),
-                  Divider(height: 30,color: Colors.grey[400]),
-                  customTextField("Contenido", true),
+                  Text(
+                    "Historia",
+                    style: TextStyle(fontSize: 30, color: Colors.grey[800]),
+                  ),
+                  Divider(height: 30, color: Colors.grey[400]),
+                  customHistori("Contenido", true, (value) {
+                    setState(() {
+                      _historiaValue = value;
+                    });
+                  }),
+                ],
+              ),
+            ),
 
-
-                ],
-              ),
-            ),
-          /*  Container(
-              margin: EdgeInsets.fromLTRB(40,40,40,40),
-              padding: EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                color: Colors.grey[400],
-              ),
-              child: Column(
-                children: [
-                  Text("STATS",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
-                  Divider(color: Colors.grey[400],height: 20,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Velocidad :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("Fuerza :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("Agilidad :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("Inteligencia :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                        ],
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.all(20),
-                            padding: EdgeInsets.all(10),
-                            color: Colors.white60,
-                            child:
-                            Column(
-                              children: [
-                                Text("0",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                                Text("0",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                                Text("0",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                                Text("0",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.all(30),
-              padding: EdgeInsets.all(1),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: Colors.grey[400]
-              ),
-              child: Column(
-                children: [
-                  Text("Historia",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
-                  Container(
-                    margin: EdgeInsets.all(20),
-                    padding: EdgeInsets.all(60),
-                    color: Colors.white60,
-                    child: Text("CONTENIDO DE LA HISTORIA"),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.fromLTRB(40,40,40,40),
-              padding: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: Colors.grey[400]
-              ),
-              child: Column(
-                children: [
-                  Text("Caracteristicas",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
-                  Divider(color: Colors.grey[400],height: 20,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Pelo :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("Piel :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("Rascos :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("Vestimenta :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("Caracter :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("Mascota :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                        ],
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.all(20),
-                            padding: EdgeInsets.all(10),
-                            color: Colors.white60,
-                            child:
-                            Column(
-                              children: [
-                                Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                                Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                                Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                                Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                                Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                                Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  )
-                ],
-              ),
-            ),*/
           ],
         ),
       ),
@@ -332,6 +248,10 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
             backgroundColor: Colors.grey[700],
             onPressed: () {
               // Implementar la lógica de guardado aquí
+              /**
+               * // Implementar la lógica de guardado aquí
+                  print('Valor de la historia: $_historiaValue');
+               */
             },
             child: Icon(Icons.save,color: Colors.grey[400],),
           ),
