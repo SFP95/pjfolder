@@ -1,3 +1,4 @@
+import 'package:RGS/src/widgets/ProfileMenuWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -55,21 +56,22 @@ class _ProfileUserLogState extends State<ProfileUserLog> {
                 ],
               ),
             ),
-            Divider(height: 50,color: Colors.grey[800]),
-            ElevatedButton(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade900),
-                  shape:  MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                  ),
-                ),
-                onPressed: (){
-                  Navigator.popAndPushNamed(context, '/login');
-                },
-                child: Text("Log Out",style: TextStyle(fontSize: 23,color: Colors.grey[400]))),
-            Divider(height: 50,color: Colors.grey[800]),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 40),
+              child: Column(
+                children: [
+                  Divider(height: 50,color: Colors.grey[800]),
+                  ProfileMenuWidget(icon: Icons.settings,title: "Settings" ,textColor:Colors.grey[400] ,endIcon: false, onPress: () {  },),
+                  ProfileMenuWidget(icon: Icons.info,title: "Information" ,textColor:Colors.grey[400] ,endIcon: false, onPress: () {  },),
+                  const SizedBox(height: 10),
+                  Divider(color: Colors.grey[500],endIndent: 0,indent: 0),
+                  const SizedBox(height: 10),
+                  ProfileMenuWidget(icon: Icons.login,title: "Sign in" ,textColor:Colors.grey[400],endIcon: true, onPress: () { Navigator.of(context).popAndPushNamed('/login'); },),
+                  ProfileMenuWidget(icon: Icons.logout,title: "Log out" ,textColor:Colors.grey[400],endIcon: true, onPress: () { Navigator.of(context).popAndPushNamed('/home'); },),
+                  Divider(height: 50,color: Colors.grey[800]),
+                ],
+              ),
+            ),
           ],
         ),
       ),
