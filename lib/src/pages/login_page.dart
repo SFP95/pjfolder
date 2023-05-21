@@ -2,6 +2,8 @@ import 'package:RGS/src/dtos/login/loginResponse_dto.dart';
 import 'package:RGS/src/models/users/user.dart';
 import 'package:flutter/material.dart';
 
+import '../services/Login_Service.dart';
+
 class LoginPage extends StatefulWidget {
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -10,7 +12,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-
+  final service = LoginService();
   /**
    *  void btnPressed(BuildContext context) async{
       //print("FUNCIONO  --  "+inputUser.getText()+"--"+ inputPss.getText());
@@ -100,8 +102,11 @@ class _LoginPageState extends State<LoginPage> {
                     backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
                    ),
                   onPressed: () async {
+                    print("LOGIN LLAMADO");
+                    var response = await service.login(_emailController.text, _passwordController.text);
 
-                    await Login(_emailController as String, _passwordController as User);
+                    print(response);
+
                     /**
                      * ()async{
                         print("FUNCIONO  --  "+inputUser.getText() +" -- "+inputPsswd.getText());

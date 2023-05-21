@@ -9,7 +9,8 @@ class ApiClient<T> {
   }
 
   Future<http.Response> post(String endpoint, {Map<String, String>? headers, dynamic body}) async {
-    return await http.post(Uri.parse('$baseUrl/$endpoint'), headers: _buildHeaders(headers), body: body);
+    var response = await http.post(Uri.parse('$baseUrl/$endpoint'), headers: _buildHeaders(headers), body: body);
+    return response;
   }
 
   Future<http.Response> patch(String endpoint, {Map<String, String>? headers, dynamic body}) async {
@@ -26,6 +27,7 @@ class ApiClient<T> {
 
   Map<String, String> _buildHeaders(Map<String, String>? headers) {
     final Map<String, String> defaultHeaders = {
+      'Content-Type': 'application/json',
       'Authorization': 'Bearer YOUR_BEARER_TOKEN',
       'X-Api-Key': apiKey,
     };
