@@ -1,3 +1,5 @@
+import 'package:RGS/src/dtos/login/loginResponse_dto.dart';
+import 'package:RGS/src/models/users/user.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -97,7 +99,9 @@ class _LoginPageState extends State<LoginPage> {
                   style:  ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
                    ),
-                  onPressed: () {
+                  onPressed: () async {
+
+                    await Login(_emailController as String, _passwordController as User);
                     /**
                      * ()async{
                         print("FUNCIONO  --  "+inputUser.getText() +" -- "+inputPsswd.getText());

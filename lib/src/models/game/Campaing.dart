@@ -1,0 +1,3 @@
+class Campaing{
+  Campaing();
+}
