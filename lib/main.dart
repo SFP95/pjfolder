@@ -1,6 +1,7 @@
 import 'package:RGS/src/pages/character_edit_page.dart';
 import 'package:RGS/src/pages/newPhoto.dart';
 import 'package:RGS/src/pages/profile_user_log.dart';
+import 'package:RGS/src/stores/UserPreferences.dart';
 import 'package:flutter/material.dart';
 import 'package:RGS/src/pages/Home_page.dart';
 import 'package:RGS/src/pages/character_creation_page.dart';
@@ -11,11 +12,14 @@ import 'package:RGS/src/pages/gallery_page.dart';
 import 'package:RGS/src/pages/login_page.dart';
 import 'package:RGS/src/pages/register_page.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await UserPreferences.initPreferences(); // Inicializar las preferencias del usuario
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

@@ -47,5 +47,16 @@ class User{
     return null;
   }
 
-
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'alias': alias,
+      'identityId': identityId,
+      'birthDate': birthDate?.toIso8601String(),
+      'imageUrl': imageUrl,
+      'characters': characters?.map((character) => character.toJson()).toList(),
+      'campaings': campaings?.map((campaing) => campaing.toJson()).toList(),
+      'games': games?.map((game) => game.toJson()).toList(),
+    };
+  }
 }

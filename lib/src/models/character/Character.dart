@@ -10,4 +10,11 @@ class Character{
       json['name'],
     );
   }
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      // Mapear otras propiedades del objeto a JSON
+    };
+  }
 }

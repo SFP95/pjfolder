@@ -3,6 +3,7 @@ import 'package:RGS/src/models/users/user.dart';
 import 'package:flutter/material.dart';
 
 import '../services/Login_Service.dart';
+import '../stores/UserPreferences.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -105,36 +106,17 @@ class _LoginPageState extends State<LoginPage> {
                     print("LOGIN LLAMADO");
                     var response = await service.login(_emailController.text, _passwordController.text);
 
-                    print(response);
+                    //print(response);
+                    await UserPreferences.saveUserCredentials(response?.user, response?.token);   // Guardar las credenciales del usuario
+                    Navigator.popAndPushNamed(context, '/'); // Navegar a la página de inicio y eliminar todas las rutas anteriores
 
-                    /**
-                     * ()async{
-                        print("FUNCIONO  --  "+inputUser.getText() +" -- "+inputPsswd.getText());
 
-                        try {
-                        final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-                        email: inputUser.getText(),
-                        password: inputPsswd.getText(),
-                        );
-                        print(' -- ESTOY DENTRO ---- Bienvenido '+inputUser.getText()+ "---"+ inputPsswd.getText());
-                        Navigator.of(context).popAndPushNamed('/home');
+                    //prueba de comprobación de recogida de user y token
+                    /*int? userId = await UserPreferences.getUserId();
+                    String? token = await UserPreferences.getToken();
+                    print('User ID: $userId');
+                    print('Token: $token');*/
 
-                        } on FirebaseAuthException catch (e) {
-                        if (e.code == 'weak-password') {
-                        print('----- La contraseña es debil -----');
-                        } else if (e.code == 'email-already-in-use') {
-                        print('---- Ya existe una cuenta con ese email -----');
-                        } else if (e.code == 'user-not-found') {
-                        print("---- No encuentro al usuario ----- ");
-                        } else if (e.code == 'wrong-password') {
-                        print("---- La contraseña no coincide ----- ");
-                        }
-                        print(e.code); //Add this line to see other firebase exceptions.
-                        } catch (e) {
-                        print(e);
-                        }
-                        },
-                     */
                   },
                   child: Text('Iniciar sesión', style: TextStyle(color: Colors.grey[800],fontSize: 20)),
                 ),
