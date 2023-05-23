@@ -1,4 +1,5 @@
 import '../../models/users/user.dart';
+import 'dart:convert';
 
 class LoginResponse_dto {
 
@@ -7,7 +8,16 @@ class LoginResponse_dto {
 
   LoginResponse_dto(this.token, this.user);
 
-  LoginResponse_dto.fromJson(Map<String, dynamic> json)
+  factory LoginResponse_dto.fromJson(Map<String, dynamic> json) {
+    return LoginResponse_dto(
+      json['token'],
+      User.fromJson(json['user']),
+    );
+  }
+
+
+
+  /*LoginResponse_dto.fromJson(Map<String, dynamic> json)
       : token = json['token'],
         user = json['user'];
 
@@ -16,5 +26,5 @@ class LoginResponse_dto {
       'token': token,
       'user': user,
     };
-  }
+  }*/
 }

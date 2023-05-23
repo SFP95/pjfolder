@@ -6,11 +6,11 @@ class User{
   late int id;
   late String alias;
   late int identityId;
-  late DateTime birthDate;
+  late DateTime? birthDate;
   late String imageUrl;
-  //late List<Character>? characters;
-  //late List<Campaing>? campaings;
-  //late List<Game>? games;
+  late List<Character>? characters;
+  late List<Campaing>? campaings;
+  late List<Game>? games;
 
   User(this.id,this.alias,this.identityId,this.birthDate,this.imageUrl/*,this.characters,this.campaings,this.games*/);
 
@@ -18,24 +18,34 @@ class User{
       : id = json['id'],
         alias = json['alias'],
         identityId = json['identityId'],
-        birthDate = json['birthDate'],
-        imageUrl = json['imageUrl']//,
-        //characters = json['characters'],
-        //campaings = json['campaings'],
-        //games = json['games']
-  ;
+        birthDate = DateTime.parse(json['birthDate']),
+        imageUrl = json['imageUrl'],
+        characters = _parseCharacters(json['characters']),
+        campaings = _parseCampaings(json['campaings']),
+        games = _parseGames(json['games']);
 
-  Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'alias': alias,
-      'identityId': identityId,
-      'birthDate': birthDate,
-      'imageUrl': imageUrl,
-      /*'characters': characters,
-      'campaings': campaings,
-      'games': games*/
-    };
+
+  // Métodos privados para procesar las listas
+  static List<Character>? _parseCharacters(dynamic json) {
+    if (json != null && json is List<dynamic>) {
+      return json.map((data) => Character.fromJson(data)).toList();
+    }
+    return null;
   }
+
+  static List<Campaing>? _parseCampaings(dynamic json) {
+    if (json != null && json is List<dynamic>) {
+      return json.map((data) => Campaing.fromJson(data)).toList();
+    }
+    return null;
+  }
+
+  static List<Game>? _parseGames(dynamic json) {
+    if (json != null && json is List<dynamic>) {
+      return json.map((data) => Game.fromJson(data)).toList();
+    }
+    return null;
+  }
+
 
 }

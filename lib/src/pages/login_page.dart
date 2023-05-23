@@ -77,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                   TextFormField(
                     style: TextStyle(
                       fontSize: 20,
-                      color: Colors.grey[400],
+                      color: Colors.grey[800],
                     ),
                     controller: _emailController,
                     decoration: InputDecoration(labelText: 'Email'),
@@ -85,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                   TextFormField(
                     style: TextStyle(
                       fontSize: 20,
-                      color: Colors.grey[400],
+                      color: Colors.grey[800],
                     ),
                     controller: _passwordController,
                     decoration: InputDecoration(labelText: 'Contraseña'),

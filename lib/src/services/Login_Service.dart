@@ -7,7 +7,26 @@ import '../utils/http_utils.dart';
 
 class LoginService{
 
+
   Future<LoginResponse_dto?> login(String email, String password) async {
+    LoginRequest_dto request = LoginRequest_dto(email, password);
+    var body = jsonEncode(request);
+
+    ApiClient apiClient = new ApiClient();
+    var response = await apiClient.post("Auth/login", headers: null, body: body);
+
+    if (response.statusCode == 200) {
+      LoginResponse_dto? loginResponse = LoginResponse_dto.fromJson(jsonDecode(response.body));
+      print("LOGIN RESPONSE");
+      print(loginResponse.token);
+      return loginResponse;
+    } else {
+      return null;
+    }
+  }
+
+
+  /*Future<LoginResponse_dto?> login(String email, String password) async {
 
     LoginRequest_dto request = LoginRequest_dto(email, password);
 
@@ -24,5 +43,5 @@ class LoginService{
     }else{
      return null;
     }
-  }
+  }*/
 }
