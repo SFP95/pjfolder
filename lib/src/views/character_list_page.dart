@@ -18,7 +18,7 @@ class CharacterListPage extends StatelessWidget {
         ),
         centerTitle: true,
         elevation: 0,
-        title: Text('Lista de Personajes',style: TextStyle(fontSize: 30,color: Colors.grey[400])),
+        title: Text('List of Characters',style: TextStyle(fontSize: 30,color: Colors.grey[400])),
         backgroundColor: Colors.grey.shade800,
       ),
       body: ListView.builder(
@@ -33,7 +33,7 @@ class CharacterListPage extends StatelessWidget {
                 borderRadius:BorderRadius.circular(30) 
             ),
             child: ListTile(
-              title: Text('Personaje $index',
+              title: Text('Character $index',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.grey[800],
