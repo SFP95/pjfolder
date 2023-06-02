@@ -1,16 +1,18 @@
 import 'package:RGS/src/pages/character_edit_page.dart';
-import 'package:RGS/src/pages/newPhoto.dart';
-import 'package:RGS/src/pages/profile_user_log.dart';
 import 'package:RGS/src/stores/UserPreferences.dart';
+import 'package:RGS/src/views/Home_page.dart';
+import 'package:RGS/src/views/character_creation_page.dart';
+import 'package:RGS/src/views/character_edit_page.dart';
+import 'package:RGS/src/views/character_list_page.dart';
+import 'package:RGS/src/views/character_sheet_page.dart';
+import 'package:RGS/src/views/dice_page.dart';
+import 'package:RGS/src/views/gallery_page.dart';
+import 'package:RGS/src/views/login_page.dart';
+import 'package:RGS/src/views/newPhoto.dart';
+import 'package:RGS/src/views/profile_user_log.dart';
+import 'package:RGS/src/views/register_page.dart';
 import 'package:flutter/material.dart';
-import 'package:RGS/src/pages/Home_page.dart';
-import 'package:RGS/src/pages/character_creation_page.dart';
-import 'package:RGS/src/pages/character_list_page.dart';
-import 'package:RGS/src/pages/character_sheet_page.dart';
-import 'package:RGS/src/pages/dice_page.dart';
-import 'package:RGS/src/pages/gallery_page.dart';
-import 'package:RGS/src/pages/login_page.dart';
-import 'package:RGS/src/pages/register_page.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

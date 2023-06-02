@@ -13,79 +13,99 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: GridView.count(
-          padding: const EdgeInsets.fromLTRB(28,150,28,28),
+          padding: const EdgeInsets.fromLTRB(28,200,28,28),
           mainAxisSpacing: 30.3,
           crossAxisSpacing: 30.3,
           crossAxisCount: 2,
           children: [
               Tooltip(
                 message: "DADOS",
-                child: IconButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(80), // Borde redondeado
+                child: Column(
+                  children: [
+                    IconButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
+                         /* shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10), // Borde redondeado
+                            ),
+                          ),*/
                         ),
+                          onPressed: (){
+                            Navigator.pushNamed(context, '/dice');
+                          },
+                          icon: Image.asset('assets/images/dado.png',color:Colors.grey.shade400, height: 200  ),
                       ),
-                    ),
-                      onPressed: (){
-                        Navigator.pushNamed(context, '/dice');
-                      },
-                      icon: Image.asset('assets/images/dado.png',color:Colors.grey.shade400, height: 140,  ),
-                  ),
+                    Text("Dice", style: TextStyle(fontSize: 30,color: Colors.grey.shade400)),
+                  ],
+                ),
               ),
                 Tooltip(
                   message: "Lista de Personajes",
-                  child: IconButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
-                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(80), // Borde redondeado
+                  child: Column(
+                    children: [
+                      IconButton(
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
+                            /*shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(80), // Borde redondeado
+                              ),
+                            ),*/
                           ),
-                        ),
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/characters_list');
+                          },
+                          icon: Image.asset('assets/images/nota.png',color:Colors.grey.shade400, height: 200)
                       ),
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/characters_list');
-                      },
-                      icon: Image.asset('assets/images/nota.png',color:Colors.grey.shade400, height: 140)
+                      Text("Characters", style: TextStyle(fontSize: 30,color: Colors.grey.shade400)),
+                    ],
                   ),
                 ),
 
                 Tooltip(
                   message: "Galeria",
-                  child: IconButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
-                      //elevation: 0,
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(80), // Borde redondeado
+                  child: Column(
+                    children: [
+                      IconButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
+                          //elevation: 0,
+                          /*shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(80), // Borde redondeado
+                            ),
+                          ),*/
                         ),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/gallery');
+                        },
+                        icon: Image.asset('assets/images/galeria.png',color:Colors.grey.shade400, height: 300),
                       ),
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/gallery');
-                    },
-                    icon: Image.asset('assets/images/galeria.png',color:Colors.grey.shade400, height: 140),
+                      Text("Galery", style: TextStyle(fontSize: 30,color: Colors.grey.shade400)),
+                    ],
                   ),
                 ),
                 Tooltip(
                   message: "Log / Sing In",
-                  child: IconButton(
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(80), // Borde redondeado
+                  child: Column(
+                    children: [
+                      IconButton(
+                        style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.grey.shade400),
+                          /*shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(80), // Borde redondeado
+                            ),
+                          ),*/
                         ),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/login');
+                        },
+                        icon: Image.asset('assets/images/perfil.png',color:Colors.grey.shade400, height: 200),
                       ),
-                    ),
-                    onPressed: () {
-                      Navigator.pushNamed(context, '/login');
-                    },
-                    icon: Image.asset('assets/images/perfil.png',color:Colors.grey.shade400, height: 140),
+                      Text("Sing in", style: TextStyle(fontSize: 30,color: Colors.grey.shade400)),
+                    ],
                   ),
                 ),
 
