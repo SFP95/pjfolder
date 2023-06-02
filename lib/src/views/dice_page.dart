@@ -40,7 +40,7 @@ class _DicePageState extends State<DicePage> {
           ),
           centerTitle: true,
           elevation: 0,
-          title: Text('Dados',style: TextStyle(fontSize: 30,color: Colors.grey[800])),
+          title: Text('Dices',style: TextStyle(fontSize: 30,color: Colors.grey[800])),
           backgroundColor: Colors.grey.shade400,
         ),
         body: SafeArea(
@@ -60,17 +60,17 @@ class _DicePageState extends State<DicePage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text("Nº de caras:",style: TextStyle(fontSize: 30,color: Colors.grey[400])),
+                    Text("Nº of die faces:",style: TextStyle(fontSize: 25,color: Colors.grey[400])),
                     Divider(height: 20),
                     DropdownButton<int>(
                       dropdownColor: Colors.grey[800],
-                      style: TextStyle(color: Colors.grey[400],fontSize: 30),
+                      style: TextStyle(color: Colors.grey[400],fontSize: 25),
                       borderRadius: BorderRadius.circular(30),
                       value: _selectedDice,
                       items: [4, 6, 8, 12, 20].map<DropdownMenuItem<int>>((int value) {
                         return DropdownMenuItem<int>(
                           value: value,
-                          child: Text('$value caras'),
+                          child: Text('$value faces'),
                         );
                       }).toList(),
                       onChanged: (int? newValue) {
@@ -93,11 +93,11 @@ class _DicePageState extends State<DicePage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text("Nº de Dados:",style: TextStyle(fontSize: 30,color: Colors.grey[400])),
+                    Text("Nº of dice:",style: TextStyle(fontSize: 25,color: Colors.grey[400])),
                     Divider(height: 25,color: Colors.grey[800]),
                     TextFormField(
                       style: TextStyle(
-                         fontSize: 25,
+                         fontSize: 25 ,
                         color: Colors.grey[400]
                       ),
                       decoration: InputDecoration(
@@ -144,9 +144,9 @@ class _DicePageState extends State<DicePage> {
                         ),
                       ),
                       onPressed: _rollDice,
-                      child: Text('Tirar ',style: TextStyle(fontSize: 25,color: Colors.grey[400])),
+                      child: Text('Roll ',style: TextStyle(fontSize: 25,color: Colors.grey[400])),
                     ),
-                    Text('Resultado:    $_result',style: TextStyle(fontSize: 23,color: Colors.grey[400])),
+                    Text('Result:    $_result',style: TextStyle(fontSize: 25,color: Colors.grey[400])),
                   ],
                 ),
               ),
