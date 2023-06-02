@@ -89,7 +89,7 @@ class _LoginPageState extends State<LoginPage> {
                       color: Colors.grey[800],
                     ),
                     controller: _passwordController,
-                    decoration: InputDecoration(labelText: 'Contraseña'),
+                    decoration: InputDecoration(labelText: 'Password'),
                     obscureText: true,
                   ),
                 ],
@@ -118,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                     print('Token: $token');*/
 
                   },
-                  child: Text('Iniciar sesión', style: TextStyle(color: Colors.grey[800],fontSize: 20)),
+                  child: Text('Log in', style: TextStyle(color: Colors.grey[800],fontSize: 20)),
                 ),
                 ElevatedButton(
                   style:  ButtonStyle(
@@ -127,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () {
                     Navigator.popAndPushNamed(context, '/register');
                   },
-                  child: Text('Registrarse', style: TextStyle(color: Colors.grey[800],fontSize: 20)),
+                  child: Text('Register', style: TextStyle(color: Colors.grey[800],fontSize: 20)),
                 ),
               ],
             ),
