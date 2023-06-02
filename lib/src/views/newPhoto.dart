@@ -63,7 +63,7 @@ class _NewPhotoState extends State<NewPhoto> {
         elevation: 0,
         centerTitle: true,
         backgroundColor: Colors.grey.shade400,
-        title: Text('Nueva Imagen',style: TextStyle(fontSize: 30,color: Colors.grey[800])),
+        title: Text('New image',style: TextStyle(fontSize: 30,color: Colors.grey[800])),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -94,7 +94,7 @@ class _NewPhotoState extends State<NewPhoto> {
                   ),
                   onPressed: _getImageFromGallery,
                   icon: Icon(Icons.image, color: Colors.grey[400]),
-                  label: Text('Galería', style: TextStyle(color: Colors.grey[400],fontSize: 25)),
+                  label: Text('Galery', style: TextStyle(color: Colors.grey[400],fontSize: 25)),
                 ),
                 ElevatedButton.icon(
                   style:  ButtonStyle(
@@ -107,7 +107,7 @@ class _NewPhotoState extends State<NewPhoto> {
                   ),
                   onPressed: _uploadImage,
                   icon: Icon(Icons.cloud_upload, color: Colors.grey[400]),
-                  label: Text('Subir', style: TextStyle(color: Colors.grey[400],fontSize: 25)),
+                  label: Text('Upload', style: TextStyle(color: Colors.grey[400],fontSize: 25)),
                 ),
               ],
           ),
