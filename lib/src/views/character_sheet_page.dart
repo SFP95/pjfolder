@@ -11,34 +11,78 @@ class _CharacterSheetPageState extends State<CharacterSheetPage> {
   int _forceValue = 0;
   int _agilityValue = 0;
   int _intelligenceValue = 0;
+  int _originalSpeedValue = 0;
+  int _originalForceValue = 0;
+  int _originalAgilityValue = 0;
+  int _originalIntelligenceValue = 0;
+  int _savedSpeedValue = 0;
+  int _savedForceValue = 0;
+  int _savedAgilityValue = 0;
+  int _savedIntelligenceValue = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _originalSpeedValue = _speedValue;
+    _originalForceValue = _forceValue;
+    _originalAgilityValue = _agilityValue;
+    _originalIntelligenceValue = _intelligenceValue;
+    _savedSpeedValue = _speedValue;
+    _savedForceValue = _forceValue;
+    _savedAgilityValue = _agilityValue;
+    _savedIntelligenceValue = _intelligenceValue;
+  }
 
   void incrementValue(String stat) {
-    setState(() {
-      if (stat == 'speed') {
-        _speedValue++;
-      } else if (stat == 'force') {
-        _forceValue++;
-      } else if (stat == 'agility') {
-        _agilityValue++;
-      } else if (stat == 'intelligence') {
-        _intelligenceValue++;
-      }
-    });
+    if (_speedValue == _savedSpeedValue &&
+        _forceValue == _savedForceValue &&
+        _agilityValue == _savedAgilityValue &&
+        _intelligenceValue == _savedIntelligenceValue) {
+      setState(() {
+        if (stat == 'speed') {
+          _speedValue++;
+        } else if (stat == 'force') {
+          _forceValue++;
+        } else if (stat == 'agility') {
+          _agilityValue++;
+        } else if (stat == 'intelligence') {
+          _intelligenceValue++;
+        }
+
+        // Actualizar los valores guardados
+        _savedSpeedValue = _speedValue;
+        _savedForceValue = _forceValue;
+        _savedAgilityValue = _agilityValue;
+        _savedIntelligenceValue = _intelligenceValue;
+      });
+    }
   }
 
   void decrementValue(String stat) {
-    setState(() {
-      if (stat == 'speed') {
-        _speedValue--;
-      } else if (stat == 'force') {
-        _forceValue--;
-      } else if (stat == 'agility') {
-        _agilityValue--;
-      } else if (stat == 'intelligence') {
-        _intelligenceValue--;
-      }
-    });
+    if (_speedValue == _savedSpeedValue &&
+        _forceValue == _savedForceValue &&
+        _agilityValue == _savedAgilityValue &&
+        _intelligenceValue == _savedIntelligenceValue) {
+      setState(() {
+        if (stat == 'speed') {
+          _speedValue--;
+        } else if (stat == 'force') {
+          _forceValue--;
+        } else if (stat == 'agility') {
+          _agilityValue--;
+        } else if (stat == 'intelligence') {
+          _intelligenceValue--;
+        }
+
+        // Actualizar los valores guardados
+        _savedSpeedValue = _speedValue;
+        _savedForceValue = _forceValue;
+        _savedAgilityValue = _agilityValue;
+        _savedIntelligenceValue = _intelligenceValue;
+      });
+    }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +169,7 @@ class _CharacterSheetPageState extends State<CharacterSheetPage> {
                                       foregroundColor: Colors.grey[400],
                                       mini: true,
                                     ),
-                                    Text("   $_speedValue   ", style: TextStyle(fontSize: 25, color: Colors.grey[800])),
+                                    Text("   $_savedSpeedValue   ", style: TextStyle(fontSize: 25, color: Colors.grey[800])),
                                     FloatingActionButton(
                                       onPressed: () => incrementValue('speed'),
                                       child: Icon(Icons.add),
@@ -150,7 +194,7 @@ class _CharacterSheetPageState extends State<CharacterSheetPage> {
                                       foregroundColor: Colors.grey[400],
                                       mini: true,
                                     ),
-                                    Text("   $_forceValue   ", style: TextStyle(fontSize: 25, color: Colors.grey[800])),
+                                    Text("   $_savedForceValue   ", style: TextStyle(fontSize: 25, color: Colors.grey[800])),
                                     FloatingActionButton(
                                       onPressed: () => incrementValue('force'),
                                       child: Icon(Icons.add),
@@ -175,7 +219,7 @@ class _CharacterSheetPageState extends State<CharacterSheetPage> {
                                       foregroundColor: Colors.grey[400],
                                       mini: true,
                                     ),
-                                    Text("   $_agilityValue   ", style: TextStyle(fontSize: 25, color: Colors.grey[800])),
+                                    Text("   $_savedAgilityValue   ", style: TextStyle(fontSize: 25, color: Colors.grey[800])),
                                     FloatingActionButton(
                                       onPressed: () => incrementValue('agility'),
                                       child: Icon(Icons.add),
@@ -200,7 +244,7 @@ class _CharacterSheetPageState extends State<CharacterSheetPage> {
                                       foregroundColor: Colors.grey[400],
                                       mini: true,
                                     ),
-                                    Text("   $_intelligenceValue   ", style: TextStyle(fontSize: 25, color: Colors.grey[800])),
+                                    Text("   $_savedIntelligenceValue   ", style: TextStyle(fontSize: 25, color: Colors.grey[800])),
                                     FloatingActionButton(
                                       onPressed: () => incrementValue('intelligence'),
                                       child: Icon(Icons.add),
@@ -270,19 +314,35 @@ class _CharacterSheetPageState extends State<CharacterSheetPage> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-            backgroundColor: Colors.grey[400],
+            backgroundColor: Colors.grey[700],
             onPressed: () {
-              Navigator.pushNamed(context, '/character_edit');
+              print('Valor de speed: $_originalSpeedValue');
+              print('Valor de force: $_originalForceValue');
+              print('Valor de agility: $_originalAgilityValue');
+              print('Valor de intelligence: $_originalIntelligenceValue');
+              // Implementar la lógica de guardado aquí
+              /**
+               * // Implementar la lógica de guardado aquí
+                  print('Valor de la historia: $_historiaValue');
+               */
             },
-            child: Icon(Icons.edit, size: 30, color: Colors.grey[800],),
+            child: Icon(Icons.save,color: Colors.grey[400],),
           ),
           SizedBox(height: 10),
           FloatingActionButton(
-            backgroundColor: Colors.grey[400],
+            backgroundColor: Colors.grey[700],
+            onPressed: () {
+              Navigator.pushNamed(context, '/character_edit');
+            },
+            child: Icon(Icons.edit, size: 30, color: Colors.grey[400],),
+          ),
+          SizedBox(height: 10),
+          FloatingActionButton(
+            backgroundColor: Colors.grey[700],
             onPressed: () {
               // Implementar la lógica de borrado aquí
             },
-            child: Icon(Icons.delete, size: 30, color: Colors.grey[800],),
+            child: Icon(Icons.delete, size: 30, color: Colors.grey[400],),
           ),
         ],
       ),
