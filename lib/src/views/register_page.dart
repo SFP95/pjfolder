@@ -54,22 +54,34 @@ class _RegisterPageState extends State<RegisterPage> {
               margin: EdgeInsets.all(10),
               padding: EdgeInsets.all(30),
               decoration: BoxDecoration(
-                  color: Colors.grey[800],
+                  color: Colors.grey[400],
                   borderRadius:BorderRadius.circular(30)
               ),
               child: Column(
                 children: [
                   TextFormField(
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.grey[800],
+                    ),
                     controller: _usernameController,
-                    decoration: InputDecoration(labelText: 'Nombre de usuario'),
+                    decoration: InputDecoration(labelText: 'User Name'),
                   ),
                   TextFormField(
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.grey[800],
+                    ),
                     controller: _emailController,
                     decoration: InputDecoration(labelText: 'Email'),
                   ),
                   TextFormField(
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.grey[800],
+                    ),
                     controller: _passwordController,
-                    decoration: InputDecoration(labelText: 'Contraseña'),
+                    decoration: InputDecoration(labelText: 'Password'),
                     obscureText: true,
                   ),
                 ],
@@ -94,7 +106,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
                      */
                   },
-                  child: Text('Registrarse', style: TextStyle(color: Colors.grey[800],fontSize: 20)),
+                  child: Text('Sign up', style: TextStyle(color: Colors.grey[800],fontSize: 20)),
                 ),
                 ElevatedButton(
                   style:  ButtonStyle(
@@ -103,7 +115,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   onPressed: () {
                     Navigator.popAndPushNamed(context, '/home');
                   },
-                  child: Text('Cancelar', style: TextStyle(color: Colors.grey[800],fontSize: 20)),
+                  child: Text('Cancel', style: TextStyle(color: Colors.grey[800],fontSize: 20)),
                 ),
               ],
             ),
