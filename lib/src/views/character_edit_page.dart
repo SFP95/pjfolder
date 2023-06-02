@@ -9,19 +9,21 @@ class CharacterEditPage extends StatefulWidget {
 }
 
 class _CharacterEditPageState extends State<CharacterEditPage> {
-  late String _selectedRace = 'Gnomo';
+  late String _selectedRace = 'Gnome';
   String _historiaValue = '';
+
   @override
   void dispose() {
     // Libera los recursos de los controladores aquí
     super.dispose();
   }
 
-
   Widget customTextField(String hintText, bool isNumeric) {
     return TextFormField(
       textAlign: TextAlign.center,
       keyboardType: isNumeric ? TextInputType.number : TextInputType.text,
+      maxLines:3, // Ajusta el número de líneas para mostrar el texto completo
+      scrollPadding: EdgeInsets.symmetric(vertical: 10), // Agrega un relleno interno
       validator: (value) {
         if (value!.isEmpty) {
           return 'Please enter some text';
@@ -54,10 +56,13 @@ class _CharacterEditPageState extends State<CharacterEditPage> {
     );
   }
 
-  Widget customHistori(String hintText, bool isNumeric, Function(String) onChanged) {
+  Widget customHistori(
+      String hintText, bool isNumeric, Function(String) onChanged) {
     return TextFormField(
       textAlign: TextAlign.center,
       keyboardType: isNumeric ? TextInputType.number : TextInputType.text,
+      maxLines: 1, // Ajusta el número de líneas para mostrar el texto completo
+      scrollPadding: EdgeInsets.symmetric(vertical: 10), // Agrega un relleno interno
       onChanged: onChanged,
       decoration: InputDecoration(
         hintText: hintText,
@@ -79,7 +84,6 @@ class _CharacterEditPageState extends State<CharacterEditPage> {
     );
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,7 +94,7 @@ class _CharacterEditPageState extends State<CharacterEditPage> {
         ),
         centerTitle: true,
         elevation: 0,
-        title: Text('Editar ficha Personaje',style: TextStyle(fontSize: 25,color: Colors.grey[400])),
+        title: Text('Edit Character card',style: TextStyle(fontSize: 25,color: Colors.grey[400])),
         backgroundColor: Colors.grey.shade800,
       ),
       body: SingleChildScrollView(
@@ -118,34 +122,40 @@ class _CharacterEditPageState extends State<CharacterEditPage> {
                      ),
                    ),
                  ),
-                 Divider(height: 30,color: Colors.grey[400]),
-                 customTextField("Introduce el nombre", false),
-                 Divider(height: 30,color: Colors.grey[400]),
-                 customTextField("Introduce el Apellido", false),
-                 Divider(height: 30,color: Colors.grey[400]),
-                 customTextField("Introduce la edad", true),
-                 Divider(height: 30,color: Colors.grey[400]),
+                 Divider(height: 30, color: Colors.grey[400]),
+                 customTextField("Speed Value", true),
+                 Divider(height: 30, color: Colors.grey[400]),
+                 customTextField("Strength Value", true),
+                 Divider(height: 30, color: Colors.grey[400]),
+                 customTextField("Agility Value", true),
+                 Divider(height: 30, color: Colors.grey[400]),
+                 customTextField("Intelligence Value", true),
                  Row(
                    mainAxisAlignment: MainAxisAlignment.center,
                    children: [
-                     Text("Raza: ",style: TextStyle(color: Colors.grey[800], fontSize: 20)),
+                     Text(
+                       "Race: ",
+                       style:
+                       TextStyle(color: Colors.grey[800], fontSize: 20),
+                     ),
                      DropdownButton<String>(
-                       dropdownColor: Colors.grey[500],
-                       style: TextStyle(color: Colors.grey[900], fontSize: 20),
+                       dropdownColor: Colors.grey[800],
+                       style:
+                       TextStyle(color: Colors.grey[400], fontSize: 20),
                        borderRadius: BorderRadius.circular(30),
                        value: _selectedRace,
                        items: [
-                         'Gnomo',
-                         'Elfo',
-                         'Mago',
-                         'Nigromante',
-                         'Enano',
-                         'Dracónido',
-                         'Semiorco',
-                         'Humano',
-                         'Mediano',
-                         'Semielfo',
-                         'Tiflin',
+                         'Gnome',
+                         'Elf',
+                         'Mage',
+                         'Necromancer',
+                         'Dwarf',
+                         'Dragonborn',
+                         'Half-Orc',
+                         'Human',
+                         'Halfling',
+                         'Half-Elf',
+                         'Tifling',
                        ].map<DropdownMenuItem<String>>(
                              (String value) {
                            return DropdownMenuItem<String>(
@@ -156,7 +166,7 @@ class _CharacterEditPageState extends State<CharacterEditPage> {
                        ).toList(),
                        onChanged: (String? newValue) {
                          setState(() {
-                           _selectedRace = newValue ?? 'gnomo';
+                           _selectedRace = newValue ?? 'Gnome';
                          });
                        },
                      ),
@@ -175,15 +185,18 @@ class _CharacterEditPageState extends State<CharacterEditPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Estadisticas",style: TextStyle(fontSize: 30,color: Colors.grey[800])),
-                Divider(height: 30,color: Colors.grey[400]),
-                customTextField("Valor de Velocidad", true),
-                Divider(height: 30,color: Colors.grey[400]),
-                customTextField("Valor de Fuerza", true),
-                Divider(height: 30,color: Colors.grey[400]),
-                customTextField("Valor de Agilidad", true),
-                Divider(height: 30,color: Colors.grey[400]),
-                customTextField("Valor de Inteligencia", true),
+                Text(
+                  "Stats",
+                  style: TextStyle(fontSize: 30, color: Colors.grey[800]),
+                ),
+                Divider(height: 30, color: Colors.grey[400]),
+                customTextField("Speed Value", true),
+                Divider(height: 30, color: Colors.grey[400]),
+                customTextField("Strength Value", true),
+                Divider(height: 30, color: Colors.grey[400]),
+                customTextField("Agility Value", true),
+                Divider(height: 30, color: Colors.grey[400]),
+                customTextField("Intelligence Value", true),
 
               ],
             ),
@@ -198,19 +211,8 @@ class _CharacterEditPageState extends State<CharacterEditPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Características",style: TextStyle(fontSize: 30,color: Colors.grey[800])),
-                  Divider(height: 30,color: Colors.grey[400]),
-                  customTextField("Descripción de Pelo", false),
-                  Divider(height: 30,color: Colors.grey[400]),
-                  customTextField("Descripción de Piel", false),
-                  Divider(height: 30,color: Colors.grey[400]),
-                  customTextField("Descripción de Rasgos", false),
-                  Divider(height: 30,color: Colors.grey[400]),
-                  customTextField("Descripción de Vestimenta", false),
-                  Divider(height: 30,color: Colors.grey[400]),
-                  customTextField("Descripción de Caracter", false),
-                  Divider(height: 30,color: Colors.grey[400]),
-                  customTextField("Descripción de Mascota", false),
+                  Text("Characteristics",style: TextStyle(fontSize: 30,color: Colors.grey[800])),
+                  customTextField("Description of Hair, Skin, Facial and body features, Clothing, Personality, and whether or not you have pets.", false),
                 ],
               ),
             ),
@@ -225,11 +227,11 @@ class _CharacterEditPageState extends State<CharacterEditPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "Historia",
+                    "HistorY",
                     style: TextStyle(fontSize: 30, color: Colors.grey[800]),
                   ),
                   Divider(height: 30, color: Colors.grey[400]),
-                  customHistori("Contenido", true, (value) {
+                  customHistori("...", true, (value) {
                     setState(() {
                       _historiaValue = value;
                     });

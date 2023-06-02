@@ -11,7 +11,7 @@ class CharacterSheetPage extends StatelessWidget {
         ),
         centerTitle: true,
         elevation: 0,
-        title: Text('Ficha de Personaje',style: TextStyle(fontSize: 30,color: Colors.grey[400])),
+        title: Text('Character File',style: TextStyle(fontSize: 30,color: Colors.grey[400])),
         backgroundColor: Colors.grey.shade800,
       ),
       body: SingleChildScrollView(
@@ -35,10 +35,10 @@ class CharacterSheetPage extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text("NOMBRE",style: TextStyle(fontSize: 30,color: Colors.grey[800])),
-                      Text("APELLIDO",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
-                      Text("EDAD",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
-                      Text("RAZA",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                      Text("NAME",style: TextStyle(fontSize: 30,color: Colors.grey[800])),
+                      Text("LAST NAME",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
+                      Text("AGE",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
+                      Text("RACE",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
                     ],
                   ),
                 ],
@@ -61,10 +61,10 @@ class CharacterSheetPage extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Velocidad :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("Fuerza :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("Agilidad :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("Inteligencia :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                          Text("Speed :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                          Text("Force :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                          Text("Agility :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
+                          Text("Intelligence :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
                         ],
                       ),
                       Column(
@@ -100,7 +100,7 @@ class CharacterSheetPage extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  Text("Caracteristicas",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
+                  Text("Characteristics",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
                   Divider(color: Colors.grey[400],height: 20,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -108,33 +108,8 @@ class CharacterSheetPage extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Pelo :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("Piel :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("Rascos :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("Vestimenta :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("Caracter :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                          Text("Mascota :",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                        ],
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                              margin: EdgeInsets.all(20),
-                              padding: EdgeInsets.all(10),
+                          Text("......\n",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
 
-                            child:
-                              Column(
-                                children: [
-                                  Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                                  Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                                  Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                                  Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                                  Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                                  Text("--",style: TextStyle(fontSize: 20,color: Colors.grey[800])),
-                                ],
-                              ),
-                          ),
                         ],
                       ),
                     ],
@@ -143,7 +118,7 @@ class CharacterSheetPage extends StatelessWidget {
               ),
             ),
             Container(
-              margin: EdgeInsets.all(30),
+              margin: EdgeInsets.fromLTRB(40,40,40,40),
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
@@ -151,11 +126,11 @@ class CharacterSheetPage extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  Text("Historia",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
+                  Text("History",style: TextStyle(fontSize: 25,color: Colors.grey[800])),
                   Container(
                     margin: EdgeInsets.all(20),
                     padding: EdgeInsets.all(60),
-                    child: Text("CONTENIDO DE LA HISTORIA"),
+                    child: Text("....................................\n"),
                   )
                 ],
               ),
