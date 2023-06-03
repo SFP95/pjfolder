@@ -1,5 +1,8 @@
-import 'package:RGS/src/stores/UserPreferences.dart';
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:RGS/src/stores/UserPreferences.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
+import 'package:crypto/crypto.dart';
 
 class RegisterPage extends StatefulWidget {
   @override
@@ -19,26 +22,46 @@ class _RegisterPageState extends State<RegisterPage> {
     super.dispose();
   }
 
-  void register(String email, String password) async {
-    // Lógica de registro...
+  void register(String email, String password) {
+    // Registration logic...
 
+    // Generate the JWT token
+    String token = generateToken();
 
-    // Registro exitoso y obtención del token
-    String token = '...'; // Obtener el token de la respuesta del servicio
+    // Save the token to UserPreferences
+    UserPreferences.saveToken(token);
 
-    // Almacenar el token en las preferencias del usuario
-    await UserPreferences.saveToken(token);
-
-    // Verificar si el token se ha guardado correctamente
-    String? storedToken = await UserPreferences.getToken();
+    // Verify if the token has been saved correctly
+    String? storedToken = UserPreferences.getToken() as String?;
     if (storedToken != null) {
-      // El token se ha guardado correctamente
-      print('Token almacenado correctamente: $storedToken');
+      // The token has been saved successfully
+      print('Token stored successfully: $storedToken');
       Navigator.popAndPushNamed(context, '/');
     } else {
-      // Error al guardar el token
-      print('Error al almacenar el token');
+      // Error storing the token
+      print('Error storing the token');
     }
+  }
+
+  String generateToken() {
+    final payload = {
+      'userId': 123,
+      'username': _usernameController.text,
+      'exp': DateTime.now().add(Duration(days: 7)).millisecondsSinceEpoch ~/ 1000, // Expires in 7 days
+    };
+
+    // Encode the payload as a JSON string
+    String encodedPayload = json.encode(payload);
+
+    // Generate a signature using a secret key
+    List<int> key = utf8.encode('your_secret_key');
+    Hmac hmac = Hmac(sha256, key);
+    Digest signature = hmac.convert(utf8.encode(encodedPayload));
+
+    // Concatenate the encoded payload and signature with a dot
+    String token = '${base64Url.encode(utf8.encode(encodedPayload))}.${base64Url.encode(signature.bytes)}';
+
+    return token;
   }
 
   @override
@@ -102,8 +125,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
                     // Llamar a la función de registro
                     register(email, password);
-                    print(username+": "+ email+" - "+password);
-
                   },
                   child: Text('Sign up',
                       style: TextStyle(color: Colors.grey[800], fontSize: 20)),
