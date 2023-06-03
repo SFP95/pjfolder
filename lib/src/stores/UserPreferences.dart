@@ -1,7 +1,5 @@
 import 'dart:convert';
-
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../models/users/user.dart';
 
 class UserPreferences {
@@ -31,5 +29,10 @@ class UserPreferences {
   static Future<String?> getToken() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString(_kTokenKey);
+  }
+
+  static Future<void> saveToken(String token) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString(_kTokenKey, token);
   }
 }
