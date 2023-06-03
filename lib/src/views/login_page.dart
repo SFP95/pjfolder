@@ -14,28 +14,6 @@ class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final service = LoginService();
-  /**
-   *  void btnPressed(BuildContext context) async{
-      //print("FUNCIONO  --  "+inputUser.getText()+"--"+ inputPss.getText());
-      try {
-      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: inputUser.getText(),
-      password: inputPss.getText(),
-      );
-      //print(' -- ESTOY DENTRO ---- Bienvenido '+inputUser.getText());
-      Navigator.of(context).popAndPushNamed('/onBoarding');
-
-      } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-      txt.text="----- The password provided is too weak -----";
-      } else if (e.code == 'email-already-in-use') {
-      txt.text="---- Ya existe una cuenta con ese email -----";
-      }
-      } catch (e) {
-      print(" NO FUNCIONO "+e.toString());
-      }
-      }
-   */
 
   @override
   void dispose() {
@@ -106,16 +84,18 @@ class _LoginPageState extends State<LoginPage> {
                     print("LOGIN LLAMADO");
                     var response = await service.login(_emailController.text, _passwordController.text);
 
-                    //print(response);
-                    await UserPreferences.saveUserCredentials(response?.user, response?.token);   // Guardar las credenciales del usuario
-                    Navigator.popAndPushNamed(context, '/'); // Navegar a la página de inicio y eliminar todas las rutas anteriores
+                    if (response != null) {
+                      // Guardar las credenciales del usuario
+                      await UserPreferences.saveUserCredentials(response.user, response.token);
 
+                      Navigator.popAndPushNamed(context, '/'); // Navegar a la página de inicio y eliminar todas las rutas anteriores
 
-                    //prueba de comprobación de recogida de user y token
-                    /*int? userId = await UserPreferences.getUserId();
-                    String? token = await UserPreferences.getToken();
-                    print('User ID: $userId');
-                    print('Token: $token');*/
+                      /*// Prueba de comprobación de recogida de user y token
+                      int? userId = await UserPreferences.getUserId();
+                      String? token = await UserPreferences.getToken();
+                      print('User ID: $userId');
+                      print('Token: $token');*/
+                    }
 
                   },
                   child: Text('Log in', style: TextStyle(color: Colors.grey[800],fontSize: 20)),
