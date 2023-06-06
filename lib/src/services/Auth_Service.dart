@@ -30,6 +30,7 @@ class AuthService{
   Future<RegisterResponse_dto?> register(String alias,String email, String password) async {
     RegisterRequest_dto request = RegisterRequest_dto(alias, email, password);
     var body = jsonEncode(request);
+    print(body);
 
     ApiClient apiClient = new ApiClient();
     var response = await apiClient.post("Auth/register", headers: null, body: body);

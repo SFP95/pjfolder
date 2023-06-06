@@ -227,7 +227,7 @@ class _CharacterEditPageState extends State<CharacterEditPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "HistorY",
+                    "History",
                     style: TextStyle(fontSize: 30, color: Colors.grey[800]),
                   ),
                   Divider(height: 30, color: Colors.grey[400]),

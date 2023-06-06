@@ -41,14 +41,14 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
           borderRadius: BorderRadius.circular(20),
           borderSide: BorderSide(
             width: 2,
-            color: Colors.grey.shade800,
+            color: Colors.deepPurple.shade400,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
             width: 2,
-            color: Colors.grey.shade800,
+            color: Colors.deepPurple.shade400,
           ),
         ),
       ),
