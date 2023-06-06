@@ -1,8 +1,5 @@
-import 'package:RGS/src/dtos/login/loginResponse_dto.dart';
-import 'package:RGS/src/models/users/user.dart';
 import 'package:flutter/material.dart';
-
-import '../services/Login_Service.dart';
+import '../services/Auth_Service.dart';
 import '../stores/UserPreferences.dart';
 
 class LoginPage extends StatefulWidget {
@@ -13,7 +10,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final service = LoginService();
+  final service = AuthService();
 
   @override
   void dispose() {
@@ -83,9 +80,12 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () async {
                     print("LOGIN LLAMADO");
                     var response = await service.login(_emailController.text, _passwordController.text);
-
+                    if (response == null){
+                      print("RESPONSE ES NULO");
+                    }
                     if (response != null) {
                       // Guardar las credenciales del usuario
+                      print("RESPONSE NO NULO, ENTRO");
                       await UserPreferences.saveUserCredentials(response.user, response.token);
 
                       Navigator.popAndPushNamed(context, '/'); // Navegar a la página de inicio y eliminar todas las rutas anteriores

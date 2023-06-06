@@ -1,7 +1,7 @@
 import 'dart:convert';
+import 'package:RGS/src/services/Auth_Service.dart';
 import 'package:flutter/material.dart';
 import 'package:RGS/src/stores/UserPreferences.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
 import 'package:crypto/crypto.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -10,13 +10,14 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  final _usernameController = TextEditingController();
+  final _aliasController = TextEditingController();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final service = AuthService();
 
   @override
   void dispose() {
-    _usernameController.dispose();
+    _aliasController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
@@ -46,7 +47,7 @@ class _RegisterPageState extends State<RegisterPage> {
   String generateToken() {
     final payload = {
       'userId': 123,
-      'username': _usernameController.text,
+      'alias': _aliasController.text,
       'exp': DateTime.now().add(Duration(days: 7)).millisecondsSinceEpoch ~/ 1000, // Expires in 7 days
     };
 
@@ -86,7 +87,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       fontSize: 20,
                       color: Colors.grey[800],
                     ),
-                    controller: _usernameController,
+                    controller: _aliasController,
                     decoration: InputDecoration(labelText: 'User Name'),
                   ),
                   TextFormField(
@@ -117,14 +118,28 @@ class _RegisterPageState extends State<RegisterPage> {
                     backgroundColor:
                     MaterialStateProperty.all<Color>(Colors.grey.shade400),
                   ),
-                  onPressed: () {
+                  onPressed: () async {
                     // Obtener los valores de los controladores
-                    String username = _usernameController.text;
+                    String alias = _aliasController.text;
                     String email = _emailController.text;
                     String password = _passwordController.text;
 
-                    // Llamar a la función de registro
-                    register(email, password);
+                    var response = await service.register(alias, email, password);
+                    if (response == null) {
+                      print("RESPONSE ES NULO");
+                    } else {
+                      // Guardar las credenciales del usuario
+                      print("RESPONSE NO NULO, ENTRO");
+                      await UserPreferences.saveUserCredentials(response.user, response.token);
+
+                      Navigator.popAndPushNamed(context, '/'); // Navegar a la página de inicio y eliminar todas las rutas anteriores
+
+                      /*// Prueba de comprobación de recogida de user y token
+                        int? userId = await UserPreferences.getUserId();
+                        String? token = await UserPreferences.getToken();
+                        print('User ID: $userId');
+                        print('Token: $token');*/
+                    }
                   },
                   child: Text('Sign up',
                       style: TextStyle(color: Colors.grey[800], fontSize: 20)),

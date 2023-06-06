@@ -1,11 +1,13 @@
 import 'dart:convert';
 
 import 'package:RGS/src/dtos/login/loginRequest_dto.dart';
+import 'package:RGS/src/dtos/login/registerRequest_dto.dart';
+import 'package:RGS/src/dtos/login/registerResponse_dto.dart';
 
 import '../dtos/login/loginResponse_dto.dart';
 import '../utils/http_utils.dart';
 
-class LoginService{
+class AuthService{
 
 
   Future<LoginResponse_dto?> login(String email, String password) async {
@@ -25,23 +27,20 @@ class LoginService{
     }
   }
 
-
-  /*Future<LoginResponse_dto?> login(String email, String password) async {
-
-    LoginRequest_dto request = LoginRequest_dto(email, password);
-
+  Future<RegisterResponse_dto?> register(String alias,String email, String password) async {
+    RegisterRequest_dto request = RegisterRequest_dto(alias, email, password);
     var body = jsonEncode(request);
 
     ApiClient apiClient = new ApiClient();
-    var a  = await apiClient.post("Auth/login",headers: null,body: body);
-    if(a.statusCode == 200){
-      print("HOLA");
+    var response = await apiClient.post("Auth/register", headers: null, body: body);
 
-      //TODO: VOLVER: falla aqui
-      LoginResponse_dto str = jsonDecode(a.body);
-      print("HOLA2");
-    }else{
-     return null;
+    if (response.statusCode == 200) {
+      RegisterResponse_dto? registerResponse = RegisterResponse_dto.fromJson(jsonDecode(response.body));
+      print("REGISTER RESPONSE");
+      print(registerResponse.token);
+      return registerResponse;
+    } else {
+      return null;
     }
-  }*/
+  }
 }

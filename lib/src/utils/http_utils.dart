@@ -9,7 +9,9 @@ class ApiClient<T> {
   }
 
   Future<http.Response> post(String endpoint, {Map<String, String>? headers, dynamic body}) async {
+    print('$baseUrl/$endpoint');
     var response = await http.post(Uri.parse('$baseUrl/$endpoint'), headers: _buildHeaders(headers), body: body);
+    print(response.statusCode);
     return response;
   }
 
