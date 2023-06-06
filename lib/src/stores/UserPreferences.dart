@@ -35,4 +35,15 @@ class UserPreferences {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString(_kTokenKey, token);
   }
+
+  static Future<void> register(User user, String token) async {
+    await saveUserCredentials(user, token);
+
+    String? storedToken = await getToken(); // Esperar la finalización del Future y obtener el resultado
+    if (storedToken != null) {
+      print('Token almacenado correctamente: $storedToken');
+    } else {
+      print('Error al almacenar el token');
+    }
+  }
 }
