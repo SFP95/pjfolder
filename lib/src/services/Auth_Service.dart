@@ -49,7 +49,7 @@ class AuthService{
   }
 
 
-  Future<CharacterResponse_dto?> character(String name,String surnane, int age,String story,String statistics,int race ) async{
+ /* Future<CharacterResponse_dto?> character(String name,String surnane, int age,String story,String statistics,int race ) async{
     CharacterRequest_dto request = CharacterRequest_dto(name,surnane, age, story,statistics ,race);
     var response = await apiClient.post("Character/CreateCharacter", headers: null, body: body);
       if (response.statusCode == 200) {
@@ -60,5 +60,5 @@ class AuthService{
       } else {
         return null;
       }
-  }
+  }*/
 }
