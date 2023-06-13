@@ -1,20 +1,31 @@
 class Character{
-  late int id;
   late String name;
+  late String surname;
+  late int age;
+  late String story;
+  late String statistics;
+  late int race;
 
-  Character(this.id, this.name);
+  Character( this.name,this.surname,this.age,this.story,this.race, json);
 
   factory Character.fromJson(Map<String, dynamic> json) {
     return Character(
-      json['id'],
-      json['name'],
+        json['name'],
+        json['surname'],
+        json['age'],
+        json['story'],
+        json['statistics'],
+        json['race']
     );
   }
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
       'name': name,
-      // Mapear otras propiedades del objeto a JSON
+      'surname': surname,
+      'age':age,
+      'story':story,
+      'statistics':statistics,
+      'race':race
     };
   }
 }

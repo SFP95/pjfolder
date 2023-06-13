@@ -4,10 +4,13 @@ import 'package:RGS/src/dtos/login/loginRequest_dto.dart';
 import 'package:RGS/src/dtos/login/registerRequest_dto.dart';
 import 'package:RGS/src/dtos/login/registerResponse_dto.dart';
 
+import '../dtos/characters/characterRequest_dto.dart';
+import '../dtos/characters/characterResponset_dto.dart';
 import '../dtos/login/loginResponse_dto.dart';
 import '../utils/http_utils.dart';
 
 class AuthService{
+
 
 
   Future<LoginResponse_dto?> login(String email, String password) async {
@@ -43,5 +46,19 @@ class AuthService{
     } else {
       return null;
     }
+  }
+
+
+  Future<CharacterResponse_dto?> character(String name,String surnane, int age,String story,String statistics,int race ) async{
+    CharacterRequest_dto request = CharacterRequest_dto(name,surnane, age, story,statistics ,race);
+    var response = await apiClient.post("Character/CreateCharacter", headers: null, body: body);
+      if (response.statusCode == 200) {
+        CharacterResponse_dto? characterResponse = CharacterResponse_dto.fromJson(jsonDecode(response.body));
+        print("CHARACTER RESPONSE");
+        //print(characterResponse.token);
+        return characterResponse;
+      } else {
+        return null;
+      }
   }
 }

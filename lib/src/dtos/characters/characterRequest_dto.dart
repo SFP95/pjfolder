@@ -1,17 +1,17 @@
 import 'dart:core';
 
-class CharacterCreateInputDto{
+class CharacterRequest_dto{
 
   late String name;
   late String surname;
   late int age;
   late String story;
   late String statistics;
-  late int race;
+  late String race;
 
-  CharacterCreateInputDto(this.name,this.surname,this.age,this.story,this.race);
+  CharacterRequest_dto(this.name,this.surname,this.age,this.story,this.race);
 
-  CharacterCreateInputDto.fromJson(Map<String, dynamic> json)
+  CharacterRequest_dto.fromJson(Map<String, dynamic> json)
     :   name = json['name'],
         surname = json['surname'],
         age = json ['age'],
