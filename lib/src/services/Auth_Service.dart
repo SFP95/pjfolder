@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:RGS/src/dtos/login/loginRequest_dto.dart';
 import 'package:RGS/src/dtos/login/registerRequest_dto.dart';
 import 'package:RGS/src/dtos/login/registerResponse_dto.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../dtos/characters/characterRequest_dto.dart';
 import '../dtos/characters/characterResponset_dto.dart';
@@ -10,6 +11,52 @@ import '../dtos/login/loginResponse_dto.dart';
 import '../utils/http_utils.dart';
 
 class AuthService {
+
+  Future<bool> isAuthenticated() async {
+    String? token = getTokenFromLocalStorage();
+
+    if (token != null) {
+      bool isValidToken = await verifyToken(token);
+      return isValidToken;
+    } else {
+      return false;
+    }
+  }
+
+  String? getTokenFromLocalStorage() {
+    // Lógica para obtener el token del almacenamiento local utilizando SharedPreferences
+    // Reemplaza "token_key" con la clave correcta utilizada para almacenar el token
+
+    SharedPreferences prefs;
+    String? token;
+
+    SharedPreferences.getInstance().then((instance) {
+      prefs = instance;
+      token = prefs.getString("token");
+    });
+
+    return token;
+  }
+
+  Future<bool> verifyToken(String token) async {
+    // Lógica para verificar la validez del token en el servidor
+    // Realiza una solicitud al servidor para verificar el token
+    // Retorna true si el token es válido, de lo contrario, retorna false
+    // Reemplaza esta lógica con tu implementación real
+
+    // Simulación de solicitud al servidor con una demora de 2 segundos
+    await Future.delayed(Duration(seconds: 2));
+
+    // Aquí debes realizar la lógica real para verificar el token en el servidor
+    // Puedes usar una librería HTTP (como http) para enviar una solicitud al servidor
+    // y validar el token con la respuesta recibida
+
+    // Ejemplo ficticio que siempre retorna true
+    return true;
+  }
+
+
+
   Future<LoginResponse_dto?> login(String email, String password) async {
     LoginRequest_dto request = LoginRequest_dto(email, password);
     var body = jsonEncode(request);
@@ -68,6 +115,8 @@ class AuthService {
       return null;
     }
   }
+
+
 
   int mapRaceToValue(String race) {
     switch (race) {

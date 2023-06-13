@@ -11,6 +11,7 @@ import 'package:RGS/src/views/login_page.dart';
 import 'package:RGS/src/views/newPhoto.dart';
 import 'package:RGS/src/views/profile_user_log.dart';
 import 'package:RGS/src/views/register_page.dart';
+import 'package:RGS/src/views/splash_view.dart';
 import 'package:flutter/material.dart';
 
 
@@ -28,9 +29,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
       title: 'RGS - Role Game System',
-      initialRoute: '/',
+      initialRoute: '/splah',
       routes: {
         '/':(context)=> HomePage(),
+        '/splah':(context)=> SplashView(),
         '/login':(context)=> LoginPage(),
         '/register': (context) => RegisterPage(),
         '/gallery': (context) => GalleryPage(),
