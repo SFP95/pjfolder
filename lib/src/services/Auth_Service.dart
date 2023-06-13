@@ -4,7 +4,6 @@ import 'package:RGS/src/dtos/login/loginRequest_dto.dart';
 import 'package:RGS/src/dtos/login/registerRequest_dto.dart';
 import 'package:RGS/src/dtos/login/registerResponse_dto.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../dtos/characters/characterRequest_dto.dart';
 import '../dtos/characters/characterResponset_dto.dart';
 import '../dtos/login/loginResponse_dto.dart';
@@ -39,21 +38,25 @@ class AuthService {
   }
 
   Future<bool> verifyToken(String token) async {
-    // Lógica para verificar la validez del token en el servidor
-    // Realiza una solicitud al servidor para verificar el token
-    // Retorna true si el token es válido, de lo contrario, retorna false
-    // Reemplaza esta lógica con tu implementación real
+    try {
+      ApiClient apiClient = ApiClient();
+      var response = await apiClient.post("verify-token", body: {'token': token});
 
-    // Simulación de solicitud al servidor con una demora de 2 segundos
-    await Future.delayed(Duration(seconds: 2));
-
-    // Aquí debes realizar la lógica real para verificar el token en el servidor
-    // Puedes usar una librería HTTP (como http) para enviar una solicitud al servidor
-    // y validar el token con la respuesta recibida
-
-    // Ejemplo ficticio que siempre retorna true
-    return true;
+      if (response.statusCode == 200) {
+        // Si la respuesta del servidor indica que el token es válido, retorna true
+        return true;
+      } else {
+        // Si la respuesta del servidor indica que el token no es válido, retorna false
+        return false;
+      }
+    } catch (e) {
+      // Manejo de errores en caso de problemas de conexión u otras excepciones
+      print('Error al verificar el token: $e');
+      return false; // En caso de error, asumimos que el token no es válido
+    }
   }
+
+
 
 
 
