@@ -9,7 +9,13 @@ class CharacterRequest_dto{
   late String statistics;
   late String race;
 
-  CharacterRequest_dto(this.name,this.surname,this.age,this.story,this.race);
+  CharacterRequest_dto({
+    required this.name,
+    required this.surname,
+    required this.age,
+    required this.story,
+    required this.race,
+  });
 
   CharacterRequest_dto.fromJson(Map<String, dynamic> json)
     :   name = json['name'],
