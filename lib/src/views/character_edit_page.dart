@@ -139,9 +139,9 @@ class _CharacterEditPageState extends State<CharacterEditPage> {
                        TextStyle(color: Colors.grey[800], fontSize: 20),
                      ),
                      DropdownButton<String>(
-                       dropdownColor: Colors.grey[800],
+                       dropdownColor: Colors.grey[400],
                        style:
-                       TextStyle(color: Colors.grey[400], fontSize: 20),
+                       TextStyle(color: Colors.grey[800], fontSize: 20),
                        borderRadius: BorderRadius.circular(30),
                        value: _selectedRace,
                        items: [

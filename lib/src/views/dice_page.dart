@@ -60,26 +60,55 @@ class _DicePageState extends State<DicePage> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text("Nº of die faces:",style: TextStyle(fontSize: 25,color: Colors.grey[400])),
+                    Text("Num of die faces:",style: TextStyle(fontSize: 25,color: Colors.grey[400])),
                     Divider(height: 20),
                     DropdownButton<int>(
                       dropdownColor: Colors.grey[800],
-                      style: TextStyle(color: Colors.grey[400],fontSize: 25),
+                      style: TextStyle(color: Colors.grey[400], fontSize: 20),
                       borderRadius: BorderRadius.circular(30),
                       value: _selectedDice,
-                      items: [4, 6, 8, 12, 20].map<DropdownMenuItem<int>>((int value) {
-                        return DropdownMenuItem<int>(
-                          value: value,
-                          child: Text('$value faces'),
-                        );
-                      }).toList(),
+                      items: [
+                        4, 6, 8, 10, 12, 20
+                      ].map<DropdownMenuItem<int>>(
+                            (int value) {
+                          List<int> diceValues;
+                          switch (value) {
+                            case 4:
+                              diceValues = List.generate(4, (index) => index + 1);
+                              break;
+                            case 6:
+                              diceValues = List.generate(6, (index) => index + 1);
+                              break;
+                            case 8:
+                              diceValues = List.generate(8, (index) => index + 1);
+                              break;
+                            case 10:
+                              diceValues = List.generate(10, (index) => (index + 1) * 10);
+                              break;
+                            case 12:
+                              diceValues = List.generate(12, (index) => index + 1);
+                              break;
+                            case 20:
+                              diceValues = List.generate(20, (index) => index + 1);
+                              break;
+                            default:
+                              diceValues = List.generate(4, (index) => index + 1);
+                          }
+
+                          return DropdownMenuItem<int>(
+                            value: value,
+                            child: Text('D$value'),
+                          );
+                        },
+                      ).toList(),
                       onChanged: (int? newValue) {
                         setState(() {
                           _selectedDice = newValue ?? 4;
                         });
                       },
                     ),
-                ],
+
+                  ],
                 )
               ),
               Container(
@@ -89,34 +118,26 @@ class _DicePageState extends State<DicePage> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(30)),
                     color: Colors.grey[800]),
-                child: Column(
+                child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text("Nº of dice:",style: TextStyle(fontSize: 25,color: Colors.grey[400])),
+                    Text("Num of dice:",style: TextStyle(fontSize: 25,color: Colors.grey[400])),
                     Divider(height: 25,color: Colors.grey[800]),
-                    TextFormField(
-                      style: TextStyle(
-                         fontSize: 25 ,
-                        color: Colors.grey[400]
-                      ),
-                      decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(5),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.grey[400]!),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.grey.shade200),
-                        ),
-                      ),
-                      textAlign: TextAlign.center,
-                      initialValue: '0',
-                      keyboardType: TextInputType.number,
-                      onChanged: (String newValue) {
+                    DropdownButton<int>(
+                      dropdownColor: Colors.grey[800],
+                      style: TextStyle(fontSize: 25, color: Colors.grey[400]),
+                      borderRadius: BorderRadius.circular(10),
+                      value: _diceCount,
+                      items: List<DropdownMenuItem<int>>.generate(11, (int index) {
+                        return DropdownMenuItem<int>(
+                          value: index,
+                          child: Text(index.toString()),
+                        );
+                      }),
+                      onChanged: (int? newValue) {
                         setState(() {
-                          _diceCount = int.tryParse(newValue) ?? 1;
+                          _diceCount = newValue ?? 0;
                         });
                       },
                     ),
