@@ -29,10 +29,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       debugShowMaterialGrid: false,
       title: 'RGS - Role Game System',
-      initialRoute: '/splah',
+      initialRoute: '/splash',
       routes: {
         '/':(context)=> HomePage(),
-        '/splah':(context)=> SplashView(),
+        '/splash':(context)=> SplashView(),
         '/login':(context)=> LoginPage(),
         '/register': (context) => RegisterPage(),
         '/gallery': (context) => GalleryPage(),
