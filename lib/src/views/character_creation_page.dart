@@ -1,6 +1,8 @@
+import 'dart:convert';
 import 'dart:io' as io;
+import 'package:RGS/src/utils/http_utils.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:http/http.dart' as http;
 
 class CharacterCreationPage extends StatefulWidget {
   @override
@@ -10,19 +12,38 @@ class CharacterCreationPage extends StatefulWidget {
 class _CharacterCreationPageState extends State<CharacterCreationPage> {
   late String _selectedRace = 'Gnome';
   String _historiaValue = '';
+  TextEditingController _historiaController = TextEditingController();
+
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _surnameController = TextEditingController();
+  final TextEditingController _ageController = TextEditingController();
+  final TextEditingController _speedController = TextEditingController();
+  final TextEditingController _strengthController = TextEditingController();
+  final TextEditingController _agilityController = TextEditingController();
+  final TextEditingController _intelligenceController = TextEditingController();
+  final TextEditingController _characteristicsController = TextEditingController();
 
   @override
   void dispose() {
-    // Libera los recursos de los controladores aquí
+    _nameController.dispose();
+    _surnameController.dispose();
+    _ageController.dispose();
+    _speedController.dispose();
+    _strengthController.dispose();
+    _agilityController.dispose();
+    _intelligenceController.dispose();
+    _characteristicsController.dispose();
+    _historiaController.dispose();
     super.dispose();
   }
 
-  Widget customTextField(String hintText, bool isNumeric) {
+  Widget customTextField(String hintText, bool isNumeric, TextEditingController controller) {
     return TextFormField(
+      controller: controller,
       textAlign: TextAlign.center,
       keyboardType: isNumeric ? TextInputType.number : TextInputType.text,
-      maxLines:3, // Ajusta el número de líneas para mostrar el texto completo
-      scrollPadding: EdgeInsets.symmetric(vertical: 10), // Agrega un relleno interno
+      maxLines:3,
+      scrollPadding: EdgeInsets.symmetric(vertical: 10),
       validator: (value) {
         if (value!.isEmpty) {
           return 'Please enter some text';
@@ -37,50 +58,132 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
       },
       decoration: InputDecoration(
         hintText: hintText,
+        hintStyle: TextStyle(color: Colors.deepPurple.shade400),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
           borderSide: BorderSide(
             width: 2,
-            color: Colors.deepPurple.shade400,
+            color: Colors.deepPurple.shade200,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
             width: 2,
-            color: Colors.deepPurple.shade400,
+            color: Colors.deepPurple.shade200,
           ),
         ),
       ),
     );
   }
 
-  Widget customHistori(
-      String hintText, bool isNumeric, Function(String) onChanged) {
+  TextFormField customCharacteristics(
+      String hintText,
+      Function(String) onChanged,
+      TextEditingController controller,
+      ) {
     return TextFormField(
+      controller: controller,
       textAlign: TextAlign.center,
-      keyboardType: isNumeric ? TextInputType.number : TextInputType.text,
-      maxLines: 1, // Ajusta el número de líneas para mostrar el texto completo
-      scrollPadding: EdgeInsets.symmetric(vertical: 10), // Agrega un relleno interno
+      keyboardType: TextInputType.text,
+      textDirection: TextDirection.ltr, // Agrega esta línea
+      maxLines: 1,
+      scrollPadding: EdgeInsets.symmetric(vertical: 10),
       onChanged: onChanged,
       decoration: InputDecoration(
         hintText: hintText,
+        hintStyle: TextStyle(color: Colors.deepPurple.shade400),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
           borderSide: BorderSide(
             width: 2,
-            color: Colors.grey.shade800,
+            color: Colors.grey.shade500,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
             width: 2,
-            color: Colors.grey.shade800,
+            color: Colors.grey.shade300,
           ),
         ),
       ),
     );
+  }
+
+  TextFormField customHistori(
+      String hintText,
+      bool isNumeric,
+      Function(String) onChanged,
+      TextEditingController controller,
+      ) {
+    return TextFormField(
+      controller: controller,
+      textAlign: TextAlign.center,
+      keyboardType: TextInputType.text,
+      maxLines: 1,
+      scrollPadding: EdgeInsets.symmetric(vertical: 10),
+      onChanged: onChanged,
+      decoration: InputDecoration(
+        hintText: hintText,
+        hintStyle: TextStyle(color: Colors.deepPurple.shade400),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          borderSide: BorderSide(
+            width: 2,
+            color: Colors.deepPurple.shade200,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(
+            width: 2,
+            color: Colors.deepPurple.shade200,
+          ),
+        ),
+      ),
+    );
+  }
+  Future<void> saveCharacter() async {
+    final String name = _nameController.text;
+    final String surname = _surnameController.text;
+    final int age = int.tryParse(_ageController.text) ?? 0;
+    final int speed = int.tryParse(_speedController.text) ?? 0;
+    final int strength = int.tryParse(_strengthController.text) ?? 0;
+    final int agility = int.tryParse(_agilityController.text) ?? 0;
+    final int intelligence = int.tryParse(_intelligenceController.text) ?? 0;
+    final String characteristics = _characteristicsController.text;
+    final String historia = _historiaValue;
+
+    final characterData = {
+      'name': name,
+      'surname': surname,
+      'age': age,
+      'race': _selectedRace,
+      'speed': speed,
+      'strength': strength,
+      'agility': agility,
+      'intelligence': intelligence,
+      'characteristics': characteristics,
+      'historia': historia,
+    };
+
+    final apiClient = ApiClient();
+
+    try {
+      final http.Response response = await apiClient.post('characters', body: jsonEncode(characterData));
+      if (response.statusCode == 201) {
+        // Character created successfully
+        print('Character created successfully');
+        Navigator.pop(context);
+      } else {
+        // Error occurred while creating character
+        print('Error occurred while creating character: ${response.statusCode}');
+      }
+    } catch (e) {
+      // Error occurred during API call
+      print('Error occurred during API call: $e');
+    }
   }
 
   @override
@@ -122,11 +225,11 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
                     ),
                   ),
                   Divider(height: 30, color: Colors.grey[400]),
-                  customTextField("Enter the name", false),
+                  customTextField("Enter the name", false, _nameController),
                   Divider(height: 30, color: Colors.grey[400]),
-                  customTextField("Enter the last name", false),
+                  customTextField("Enter the last name", false, _surnameController),
                   Divider(height: 30, color: Colors.grey[400]),
-                  customTextField("Enter age", true),
+                  customTextField("Enter age", true, _ageController),
                   Divider(height: 30, color: Colors.grey[400]),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -187,16 +290,17 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
                     style: TextStyle(fontSize: 30, color: Colors.grey[800]),
                   ),
                   Divider(height: 30, color: Colors.grey[400]),
-                  customTextField("Speed Value", true),
+                  customTextField("Speed Value", true, _speedController),
                   Divider(height: 30, color: Colors.grey[400]),
-                  customTextField("Strength Value", true),
+                  customTextField("Strength Value", true, _strengthController),
                   Divider(height: 30, color: Colors.grey[400]),
-                  customTextField("Agility Value", true),
+                  customTextField("Agility Value", true, _agilityController),
                   Divider(height: 30, color: Colors.grey[400]),
-                  customTextField("Intelligence Value", true),
+                  customTextField("Intelligence Value", true, _intelligenceController),
                 ],
               ),
             ),
+
             Container(
               margin: EdgeInsets.all(20),
               padding: EdgeInsets.all(30),
@@ -204,66 +308,63 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
                   color: Colors.grey[400],
                   borderRadius: BorderRadius.circular(50)),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     "Characteristics",
                     style: TextStyle(fontSize: 30, color: Colors.grey[800]),
                   ),
                   Divider(height: 30, color: Colors.grey[400]),
-                  customTextField("Description of Hair, Skin, Facial and body features, Clothing, Personality, and whether or not you have pets.", false),
+                  customCharacteristics("Enter the characteristics", (value) {
+                    setState(() {
+                      _characteristicsController.value = _characteristicsController.value.copyWith(text: value);
+                    });
+                  },_characteristicsController),
                 ],
               ),
             ),
+
+
             Container(
-              margin: EdgeInsets.all(20),
-              padding: EdgeInsets.all(30),
-              decoration: BoxDecoration(
-                color: Colors.grey[400],
-                borderRadius: BorderRadius.circular(50),
+          margin: EdgeInsets.all(20),
+          padding: EdgeInsets.all(30),
+          decoration: BoxDecoration(
+              color: Colors.grey[400],
+              borderRadius: BorderRadius.circular(50)),
+          child: Column(
+            children: [
+              Text(
+                "History",
+                style: TextStyle(fontSize: 30, color: Colors.grey[800]),
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "History",
-                    style: TextStyle(fontSize: 30, color: Colors.grey[800]),
-                  ),
-                  Divider(height: 30, color: Colors.grey[400]),
-                  customHistori("....", true, (value) {
-                    setState(() {
-                      _historiaValue = value;
-                    });
-                  }),
-                ],
-              ),
+              Divider(height: 30, color: Colors.grey[400]),
+              customHistori("Enter the story", false, (value) {
+                setState(() {
+                  _historiaValue= value;
+                });
+              }, _historiaController),
+            ],
+          ),
+        ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FloatingActionButton(
+                  backgroundColor: Colors.grey[400]?.withOpacity(0.3),
+                  onPressed: saveCharacter,
+                  child: Icon(Icons.save, color: Colors.deepPurple[100]),
+                ),
+                SizedBox(width: 10),
+                FloatingActionButton(
+                  backgroundColor: Colors.grey[400]?.withOpacity(0.3),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(Icons.cancel, color: Colors.deepPurple[100]),
+                ),
+              ],
             ),
           ],
         ),
-      ),
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            backgroundColor: Colors.grey[700],
-            onPressed: () {
-              // Implementar la lógica de guardado aquí
-              /**
-               * // Implementar la lógica de guardado aquí
-               * print('Valor de la historia: $_historiaValue');
-               */
-            },
-            child: Icon(Icons.save, color: Colors.grey[400]),
-          ),
-          SizedBox(width: 10),
-          FloatingActionButton(
-            backgroundColor: Colors.grey[700],
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Icon(Icons.cancel, color: Colors.grey[400]),
-          ),
-        ],
       ),
     );
   }

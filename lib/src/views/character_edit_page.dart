@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io' as io;
+import 'package:RGS/src/models/character/Character.dart';
 import 'package:RGS/src/utils/http_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -59,39 +60,41 @@ class _CharacterEditPageState extends State<CharacterEditPage> {
       },
       decoration: InputDecoration(
         hintText: hintText,
+        hintStyle: TextStyle(color: Colors.deepPurple.shade400),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
           borderSide: BorderSide(
             width: 2,
-            color: Colors.deepPurple.shade400,
+            color: Colors.deepPurple.shade200,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
           borderSide: BorderSide(
             width: 2,
-            color: Colors.deepPurple.shade400,
+            color: Colors.deepPurple.shade200,
           ),
         ),
       ),
     );
   }
 
-  TextFormField customHistori(
+  TextFormField customCharacteristics(
       String hintText,
-      bool isNumeric,
       Function(String) onChanged,
       TextEditingController controller,
       ) {
     return TextFormField(
       controller: controller,
       textAlign: TextAlign.center,
-      keyboardType: isNumeric ? TextInputType.text : TextInputType.text,
+      keyboardType: TextInputType.text,
+      textDirection: TextDirection.ltr, // Agrega esta línea
       maxLines: 1,
       scrollPadding: EdgeInsets.symmetric(vertical: 10),
       onChanged: onChanged,
       decoration: InputDecoration(
         hintText: hintText,
+        hintStyle: TextStyle(color: Colors.deepPurple.shade400),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
           borderSide: BorderSide(
@@ -110,6 +113,39 @@ class _CharacterEditPageState extends State<CharacterEditPage> {
     );
   }
 
+  TextFormField customHistori(
+      String hintText,
+      bool isNumeric,
+      Function(String) onChanged,
+      TextEditingController controller,
+      ) {
+    return TextFormField(
+      controller: controller,
+      textAlign: TextAlign.center,
+      keyboardType: TextInputType.text,
+      maxLines: 1,
+      scrollPadding: EdgeInsets.symmetric(vertical: 10),
+      onChanged: onChanged,
+      decoration: InputDecoration(
+        hintText: hintText,
+        hintStyle: TextStyle(color: Colors.deepPurple.shade400),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          borderSide: BorderSide(
+            width: 2,
+            color: Colors.deepPurple.shade200,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(
+            width: 2,
+            color: Colors.deepPurple.shade200,
+          ),
+        ),
+      ),
+    );
+  }
   Future<void> saveCharacter() async {
     final String name = _nameController.text;
     final String surname = _surnameController.text;
@@ -266,6 +302,7 @@ class _CharacterEditPageState extends State<CharacterEditPage> {
                 ],
               ),
             ),
+
             Container(
               margin: EdgeInsets.all(20),
               padding: EdgeInsets.all(30),
@@ -273,18 +310,34 @@ class _CharacterEditPageState extends State<CharacterEditPage> {
                   color: Colors.grey[400],
                   borderRadius: BorderRadius.circular(50)),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     "Characteristics",
                     style: TextStyle(fontSize: 30, color: Colors.grey[800]),
                   ),
                   Divider(height: 30, color: Colors.grey[400]),
-                  customHistori("Enter the characteristics", false, (value) {
+                  customCharacteristics("Enter the characteristics", (value) {
                     setState(() {
-                      _characteristicsController.text = value;
+                      _characteristicsController.value = _characteristicsController.value.copyWith(text: value);
                     });
-                  }, _characteristicsController),
+                  },_characteristicsController),
+                ],
+              ),
+            ),
+
+
+            Container(
+              margin: EdgeInsets.all(20),
+              padding: EdgeInsets.all(30),
+              decoration: BoxDecoration(
+                  color: Colors.grey[400],
+                  borderRadius: BorderRadius.circular(50)),
+              child: Column(
+                children: [
+                  Text(
+                    "History",
+                    style: TextStyle(fontSize: 30, color: Colors.grey[800]),
+                  ),
                   Divider(height: 30, color: Colors.grey[400]),
                   customHistori("Enter the story", false, (value) {
                     setState(() {
@@ -294,19 +347,31 @@ class _CharacterEditPageState extends State<CharacterEditPage> {
                 ],
               ),
             ),
-
-            FloatingActionButton(
-              backgroundColor: Colors.grey[700],
-              onPressed: saveCharacter,
-              child: Icon(Icons.save, color: Colors.grey[400]),
-            ),
-            SizedBox(width: 10),
-            FloatingActionButton(
-              backgroundColor: Colors.grey[700],
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Icon(Icons.cancel, color: Colors.grey[400]),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FloatingActionButton(
+                  backgroundColor: Colors.grey[400]?.withOpacity(0.3),
+                  onPressed: saveCharacter,
+                  child: Icon(Icons.save, color: Colors.deepPurple[100]),
+                ),
+                SizedBox(width: 10),
+                FloatingActionButton(
+                  backgroundColor: Colors.grey[400]?.withOpacity(0.3),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(Icons.delete, color: Colors.deepPurple[100]),
+                ),
+                SizedBox(width: 10),
+                FloatingActionButton(
+                  backgroundColor: Colors.grey[400]?.withOpacity(0.3),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Icon(Icons.cancel, color: Colors.deepPurple[100]),
+                ),
+              ],
             ),
           ],
         ),

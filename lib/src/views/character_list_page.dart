@@ -104,11 +104,11 @@ class _CharacterListPageState extends State<CharacterListPage> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.grey[700],
+        backgroundColor: Colors.grey[400]?.withOpacity(0.3),
         onPressed: () {
           Navigator.pushNamed(context, '/character_creation');
         },
-        child: Icon(Icons.add),
+        child: Icon(Icons.add,color: Colors.deepPurple[100],),
       ),
     );
   }
