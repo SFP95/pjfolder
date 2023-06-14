@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io' as io;
 import 'package:RGS/src/utils/http_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -144,45 +143,33 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
       ),
     );
   }
-  Future<void> saveCharacter() async {
-    final String name = _nameController.text;
-    final String surname = _surnameController.text;
-    final int age = int.tryParse(_ageController.text) ?? 0;
-    final int speed = int.tryParse(_speedController.text) ?? 0;
-    final int strength = int.tryParse(_strengthController.text) ?? 0;
-    final int agility = int.tryParse(_agilityController.text) ?? 0;
-    final int intelligence = int.tryParse(_intelligenceController.text) ?? 0;
-    final String characteristics = _characteristicsController.text;
-    final String historia = _historiaValue;
 
-    final characterData = {
-      'name': name,
-      'surname': surname,
-      'age': age,
-      'race': _selectedRace,
-      'speed': speed,
-      'strength': strength,
-      'agility': agility,
-      'intelligence': intelligence,
-      'characteristics': characteristics,
-      'historia': historia,
-    };
-
+  void saveCharacter() async {
+    // Crear un objeto ApiClient
     final apiClient = ApiClient();
 
-    try {
-      final http.Response response = await apiClient.post('characters', body: jsonEncode(characterData));
-      if (response.statusCode == 201) {
-        // Character created successfully
-        print('Character created successfully');
-        Navigator.pop(context);
-      } else {
-        // Error occurred while creating character
-        print('Error occurred while creating character: ${response.statusCode}');
-      }
-    } catch (e) {
-      // Error occurred during API call
-      print('Error occurred during API call: $e');
+    // Construir el cuerpo de la solicitud con los datos del personaje
+    final body = {
+      'name': _nameController.text,
+      'race': _selectedRace,
+      'speed': _speedController.text,
+      'strength': _strengthController.text,
+      'agility': _agilityController.text,
+      'intelligence': _intelligenceController.text,
+      'characteristics': _characteristicsController.text,
+      'history': _historiaController.text,
+    };
+
+    // Realizar la solicitud POST a la API utilizando ApiClient
+    final response = await apiClient.post('characters', body: body);
+
+    // Verificar el código de respuesta
+    if (response.statusCode == 201) {
+      // El personaje se guardó correctamente
+      print('Personaje guardado exitosamente');
+    } else {
+      // Hubo un error al guardar el personaje
+      print('Error al guardar el personaje. Código de respuesta: ${response.statusCode}');
     }
   }
 
@@ -296,11 +283,11 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
                   Divider(height: 30, color: Colors.grey[400]),
                   customTextField("Agility Value", true, _agilityController),
                   Divider(height: 30, color: Colors.grey[400]),
-                  customTextField("Intelligence Value", true, _intelligenceController),
+                  customTextField(
+                      "Intelligence Value", true, _intelligenceController),
                 ],
               ),
             ),
-
             Container(
               margin: EdgeInsets.all(20),
               padding: EdgeInsets.all(30),
@@ -314,52 +301,53 @@ class _CharacterCreationPageState extends State<CharacterCreationPage> {
                     style: TextStyle(fontSize: 30, color: Colors.grey[800]),
                   ),
                   Divider(height: 30, color: Colors.grey[400]),
-                  customCharacteristics("Enter the characteristics", (value) {
-                    setState(() {
-                      _characteristicsController.value = _characteristicsController.value.copyWith(text: value);
-                    });
-                  },_characteristicsController),
+                  customCharacteristics(
+                    "Enter the characteristics",
+                        (value) {
+                      setState(() {
+                        _characteristicsController.text = value;
+                      });
+                    },
+                    _characteristicsController,
+                  ),
                 ],
               ),
             ),
-
-
             Container(
-          margin: EdgeInsets.all(20),
-          padding: EdgeInsets.all(30),
-          decoration: BoxDecoration(
-              color: Colors.grey[400],
-              borderRadius: BorderRadius.circular(50)),
-          child: Column(
-            children: [
-              Text(
-                "History",
-                style: TextStyle(fontSize: 30, color: Colors.grey[800]),
+              margin: EdgeInsets.all(20),
+              padding: EdgeInsets.all(30),
+              decoration: BoxDecoration(
+                  color: Colors.grey[400],
+                  borderRadius: BorderRadius.circular(50)),
+              child: Column(
+                children: [
+                  Text(
+                    "History",
+                    style: TextStyle(fontSize: 30, color: Colors.grey[800]),
+                  ),
+                  Divider(height: 30, color: Colors.grey[400]),
+                  customHistori(
+                    "Enter the story",
+                    false,
+                        (value) {
+                      setState(() {
+                        _historiaValue = value;
+                      });
+                    },
+                    _historiaController,
+                  ),
+                ],
               ),
-              Divider(height: 30, color: Colors.grey[400]),
-              customHistori("Enter the story", false, (value) {
-                setState(() {
-                  _historiaValue= value;
-                });
-              }, _historiaController),
-            ],
-          ),
-        ),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 FloatingActionButton(
-                  backgroundColor: Colors.grey[400]?.withOpacity(0.3),
+                  backgroundColor: Colors.grey[400]
+                      ?.withOpacity(0.3),
                   onPressed: saveCharacter,
-                  child: Icon(Icons.save, color: Colors.deepPurple[100]),
-                ),
-                SizedBox(width: 10),
-                FloatingActionButton(
-                  backgroundColor: Colors.grey[400]?.withOpacity(0.3),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Icon(Icons.cancel, color: Colors.deepPurple[100]),
+                  child: Icon(Icons.save,
+                      color: Colors.deepPurple[100]),
                 ),
               ],
             ),

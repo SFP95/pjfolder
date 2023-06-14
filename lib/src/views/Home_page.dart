@@ -1,6 +1,20 @@
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+  void logout() {
+    // Aquí realizarías las operaciones necesarias para cerrar la sesión en la base de datos
+    // Por ejemplo, puedes borrar los datos de sesión o establecer una bandera de "logged_in" en falso
+
+    // Después de cerrar la sesión, puedes navegar a la pantalla de inicio de sesión u otra pantalla
+    Navigator.pushNamed(context, '/login'); // Reemplaza la pantalla actual por la pantalla de inicio de sesión
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +27,7 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(28, 200, 28, 28),
+            padding: const EdgeInsets.fromLTRB(28, 150, 28, 28),
             child: GridView.count(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
@@ -63,7 +77,7 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-                Tooltip(
+                /*Tooltip(
                   message: "Galeria",
                   child: Column(
                     children: [
@@ -83,7 +97,26 @@ class HomePage extends StatelessWidget {
                       ),
                     ],
                   ),
+                ),*/
+                Tooltip(
+                  message: 'Log Out',
+                  child: Column(
+                    children: [
+                      IconButton(
+                        iconSize: 100,
+                        onPressed: () {
+                          logout();
+                        },
+                        icon: Icon(Icons.logout, size: 80,color: Colors.grey.shade400,),
+                      ),
+                      Text(
+                        'Log out',
+                        style: TextStyle(fontSize: 30, color: Colors.grey.shade400),
+                      ),
+                    ],
+                  ),
                 ),
+
                 Tooltip(
                   message: "Log / Sing In",
                   child: Column(
