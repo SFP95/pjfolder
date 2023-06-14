@@ -347,31 +347,34 @@ class _CharacterEditPageState extends State<CharacterEditPage> {
                 ],
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                FloatingActionButton(
-                  backgroundColor: Colors.grey[400]?.withOpacity(0.3),
-                  onPressed: saveCharacter,
-                  child: Icon(Icons.save, color: Colors.deepPurple[100]),
-                ),
-                SizedBox(width: 10),
-                FloatingActionButton(
-                  backgroundColor: Colors.grey[400]?.withOpacity(0.3),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Icon(Icons.delete, color: Colors.deepPurple[100]),
-                ),
-                SizedBox(width: 10),
-                FloatingActionButton(
-                  backgroundColor: Colors.grey[400]?.withOpacity(0.3),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: Icon(Icons.cancel, color: Colors.deepPurple[100]),
-                ),
-              ],
+            Container(
+              margin: EdgeInsets.all(20),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  FloatingActionButton(
+                    backgroundColor: Colors.grey[400]?.withOpacity(0.3),
+                    onPressed: saveCharacter,
+                    child: Icon(Icons.save, color: Colors.deepPurple[100]),
+                  ),
+                  SizedBox(width: 10),
+                  FloatingActionButton(
+                    backgroundColor: Colors.grey[400]?.withOpacity(0.3),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(Icons.delete, color: Colors.deepPurple[100]),
+                  ),
+                  SizedBox(width: 10),
+                  FloatingActionButton(
+                    backgroundColor: Colors.grey[400]?.withOpacity(0.3),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Icon(Icons.cancel, color: Colors.deepPurple[100]),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'dart:math';
 
 class CharacterListPage extends StatefulWidget {
   @override
@@ -43,6 +44,22 @@ class _CharacterListPageState extends State<CharacterListPage> {
     }
   }
 
+  Character generateRandomCharacter() {
+    List<String> randomNames = ['John', 'Jane', 'David', 'Emma', 'Michael', 'Olivia'];
+    List<String> randomSurnames = ['Smith', 'Johnson', 'Brown', 'Davis', 'Miller', 'Wilson'];
+    List<String> randomRaces = ['Human', 'Elf', 'Dwarf', 'Orc', 'Gnome', 'Halfling'];
+
+    Random random = Random();
+    String randomName = randomNames[random.nextInt(randomNames.length)];
+    String randomSurname = randomSurnames[random.nextInt(randomSurnames.length)];
+    int randomAge = random.nextInt(100) + 1;
+    String randomStory = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+    String randomStatistics = 'Strength: ${random.nextInt(10)}, Intelligence: ${random.nextInt(10)}, Agility: ${random.nextInt(10)}';
+    String randomRace = randomRaces[random.nextInt(randomRaces.length)];
+
+    return Character(randomName, randomSurname, randomAge, randomStory, randomStatistics, randomRace);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,8 +85,43 @@ class _CharacterListPageState extends State<CharacterListPage> {
       ),
       body: ListView.builder(
         padding: EdgeInsets.all(30),
-        itemCount: characters.length,
+        itemCount: characters.length + 1, // Agregar 1 para el ejemplo de personaje aleatorio
         itemBuilder: (BuildContext context, int index) {
+          if (index == characters.length) {
+            // Índice del ejemplo de personaje aleatorio
+            Character randomCharacter = generateRandomCharacter();
+
+            return Container(
+              margin: EdgeInsets.all(10),
+              padding: EdgeInsets.all(30),
+              decoration: BoxDecoration(
+                color: Colors.grey[400],
+                borderRadius: BorderRadius.circular(30),
+              ),
+              child: ListTile(
+                title: Text(
+                  randomCharacter.name,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.grey[800],
+                    fontSize: 30,
+                  ),
+                ),
+                subtitle: Text(
+                  randomCharacter.race,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.grey[600],
+                    fontSize: 20,
+                  ),
+                ),
+                onTap: () {
+                  Navigator.pushNamed(context, '/character_sheet');
+                },
+              ),
+            );
+          }
+
           Character character = characters[index];
 
           return Container(

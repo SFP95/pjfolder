@@ -6,7 +6,7 @@ class Character {
   late String statistics;
   late String race;
 
-  Character(this.name, this.surname, this.age, this.story, this.statistics, this.race);
+  Character(this.name, this.surname, this.age, this.story, this.statistics, this.race );
 
   factory Character.fromJson(Map<String, dynamic> json) {
     return Character(

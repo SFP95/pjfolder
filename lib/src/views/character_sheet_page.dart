@@ -166,7 +166,7 @@ class _CharacterSheetPageState extends State<CharacterSheetPage> {
                                       onPressed: () => decrementValue('speed'),
                                       child: Icon(Icons.remove),
                                       backgroundColor: Colors.grey[700],
-                                      foregroundColor: Colors.grey[400],
+                                      foregroundColor: Colors.deepPurple[100],
                                       mini: true,
                                     ),
                                     Text("   $_savedSpeedValue   ", style: TextStyle(fontSize: 25, color: Colors.grey[800])),
@@ -174,7 +174,7 @@ class _CharacterSheetPageState extends State<CharacterSheetPage> {
                                       onPressed: () => incrementValue('speed'),
                                       child: Icon(Icons.add),
                                       backgroundColor: Colors.grey[700],
-                                      foregroundColor: Colors.grey[400],
+                                      foregroundColor: Colors.deepPurple[100],
                                       mini: true,
                                     ),
                                   ],
@@ -191,7 +191,7 @@ class _CharacterSheetPageState extends State<CharacterSheetPage> {
                                       onPressed: () => decrementValue('force'),
                                       child: Icon(Icons.remove),
                                       backgroundColor: Colors.grey[700],
-                                      foregroundColor: Colors.grey[400],
+                                      foregroundColor: Colors.deepPurple[100],
                                       mini: true,
                                     ),
                                     Text("   $_savedForceValue   ", style: TextStyle(fontSize: 25, color: Colors.grey[800])),
@@ -199,7 +199,7 @@ class _CharacterSheetPageState extends State<CharacterSheetPage> {
                                       onPressed: () => incrementValue('force'),
                                       child: Icon(Icons.add),
                                       backgroundColor: Colors.grey[700],
-                                      foregroundColor: Colors.grey[400],
+                                      foregroundColor: Colors.deepPurple[100],
                                       mini: true,
                                     ),
                                   ],
@@ -216,7 +216,7 @@ class _CharacterSheetPageState extends State<CharacterSheetPage> {
                                       onPressed: () => decrementValue('agility'),
                                       child: Icon(Icons.remove),
                                       backgroundColor: Colors.grey[700],
-                                      foregroundColor: Colors.grey[400],
+                                      foregroundColor: Colors.deepPurple[100],
                                       mini: true,
                                     ),
                                     Text("   $_savedAgilityValue   ", style: TextStyle(fontSize: 25, color: Colors.grey[800])),
@@ -224,7 +224,7 @@ class _CharacterSheetPageState extends State<CharacterSheetPage> {
                                       onPressed: () => incrementValue('agility'),
                                       child: Icon(Icons.add),
                                       backgroundColor: Colors.grey[700],
-                                      foregroundColor: Colors.grey[400],
+                                      foregroundColor: Colors.deepPurple[100],
                                       mini: true,
                                     ),
                                   ],
@@ -241,7 +241,7 @@ class _CharacterSheetPageState extends State<CharacterSheetPage> {
                                       onPressed: () => decrementValue('intelligence'),
                                       child: Icon(Icons.remove),
                                       backgroundColor: Colors.grey[700],
-                                      foregroundColor: Colors.grey[400],
+                                      foregroundColor: Colors.deepPurple[100],
                                       mini: true,
                                     ),
                                     Text("   $_savedIntelligenceValue   ", style: TextStyle(fontSize: 25, color: Colors.grey[800])),
@@ -249,7 +249,7 @@ class _CharacterSheetPageState extends State<CharacterSheetPage> {
                                       onPressed: () => incrementValue('intelligence'),
                                       child: Icon(Icons.add),
                                       backgroundColor: Colors.grey[700],
-                                      foregroundColor: Colors.grey[400],
+                                      foregroundColor: Colors.deepPurple[100],
                                       mini: true,
                                     ),
                                   ],
@@ -307,44 +307,42 @@ class _CharacterSheetPageState extends State<CharacterSheetPage> {
                 ],
               ),
             ),
+            Container(
+                margin: EdgeInsets.all(20),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    FloatingActionButton(
+                      backgroundColor: Colors.grey[400]?.withOpacity(0.3),
+                      onPressed: () {
+                        print('Valor de speed: $_originalSpeedValue');
+                        print('Valor de force: $_originalForceValue');
+                        print('Valor de agility: $_originalAgilityValue');
+                        print('Valor de intelligence: $_originalIntelligenceValue');
+                        // Implementar la lógica de guardado aquí
+                        /**
+                         * // Implementar la lógica de guardado aquí
+                            print('Valor de la historia: $_historiaValue');
+                         */
+                      },
+                      child: Icon(Icons.save,color: Colors.deepPurple[100],),
+                    ),
+                    const SizedBox(height: 30),
+                    FloatingActionButton(
+                      backgroundColor: Colors.grey[400]?.withOpacity(0.3),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/character_edit');
+                      },
+                      child: Icon(Icons.edit, size: 30, color: Colors.deepPurple[100],),
+                    ),
+
+
+                  ],
+                )
+            ),
+
           ],
         ),
-      ),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            backgroundColor: Colors.grey[700],
-            onPressed: () {
-              print('Valor de speed: $_originalSpeedValue');
-              print('Valor de force: $_originalForceValue');
-              print('Valor de agility: $_originalAgilityValue');
-              print('Valor de intelligence: $_originalIntelligenceValue');
-              // Implementar la lógica de guardado aquí
-              /**
-               * // Implementar la lógica de guardado aquí
-                  print('Valor de la historia: $_historiaValue');
-               */
-            },
-            child: Icon(Icons.save,color: Colors.grey[400],),
-          ),
-          SizedBox(height: 10),
-          FloatingActionButton(
-            backgroundColor: Colors.grey[700],
-            onPressed: () {
-              Navigator.pushNamed(context, '/character_edit');
-            },
-            child: Icon(Icons.edit, size: 30, color: Colors.grey[400],),
-          ),
-          SizedBox(height: 10),
-          FloatingActionButton(
-            backgroundColor: Colors.grey[700],
-            onPressed: () {
-              // Implementar la lógica de borrado aquí
-            },
-            child: Icon(Icons.delete, size: 30, color: Colors.grey[400],),
-          ),
-        ],
       ),
     );
   }
